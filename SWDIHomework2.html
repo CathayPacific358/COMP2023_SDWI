@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <title>Currency Trans</title>
+    <h1>Currency Exchange</h1>
+</head>
+
+<body>
+    <input type="number" placeholder="Amount" id="ipt">
+    <select id="iSelect">
+        <option value="iUSD">US Dollar</option>
+        <option value="iEUR">Euro</option>
+        <option value="iCNY">Chinese Yuan</option>
+        <option value="iHKD">Hong Kong Dollar</option>
+    </select>
+
+    <br/>
+    <br/>
+
+    <input type="number" placeholder="Amount" id="opt"readonly>
+    <select id="oSelect">
+        <option value="oUSD">US Dollar</option>
+        <option value="oEUR">Euro</option>
+        <option value="oCNY">Chinese Yuan</option>
+        <option value="oHKD">Hong Kong Dollar</option>
+    </select>
+
+    <br/>
+    <br/>
+
+    <button onclick="convert()" id="result">Convert</button>
+
+    <script>
+        var mI = document.getElementById("ipt");
+        var mO = document.getElementById("opt");
+        var result;
+        var interchange;
+
+        function convert() {
+            var currentC = document.getElementById("iSelect").value;
+            var aimC = document.getElementById("oSelect").value;
+
+                switch (currentC) {
+                    case"iUSD": interchange = parseFloat(mI.value) * 0.8116;
+                    break;
+                    case"iEUR": interchange = parseFloat(mI.value) * 1;
+                    break;
+                    case"iCNY": interchange = parseFloat(mI.value) * 0.1294;
+                    break;
+                    case"iHKD": interchange = parseFloat(mI.value) * 0.1034;
+                }
+
+                switch (aimC) {
+                    case"oUSD": result = interchange / 0.8116;
+                    break;
+                    case"oEUR": result = interchange / 1;
+                    break;
+                    case"oCNY": result = interchange / 0.1294;
+                    break;
+                    case"oHKD": result = interchange / 0.1034;
+                }
+
+                mO.value = result;
+
+        }
+
+    </script>
+</body>
+
+</html>
