@@ -5,6 +5,7 @@
 </head>
 
 <body>
+    <!-- Input Amount -->
     <input type="number" placeholder="Amount" id="ipt">
     <select id="iSelect">
         <option value="iUSD">US Dollar</option>
@@ -15,7 +16,8 @@
 
     <br/>
     <br/>
-
+    
+    <!-- Output Block READONLY -->
     <input type="number" placeholder="Amount" id="opt"readonly>
     <select id="oSelect">
         <option value="oUSD">US Dollar</option>
@@ -26,20 +28,24 @@
 
     <br/>
     <br/>
-
-    <button onclick="convert()" id="result">Convert</button>
+    
+    <!-- Convert Button -->
+    <button onclick="convert('iSelect')" id="result">Convert</button>
 
     <script>
+        /** Global Variable **/
         var mI = document.getElementById("ipt");
         var mO = document.getElementById("opt");
         var result;
         var interchange;
 
-        function convert() {
-            var currentC = document.getElementById("iSelect").value;
+        /** Argument: RESULT **/
+        function convert(result) {
+            var currentC = document.getElementById(result).value;
             var aimC = document.getElementById("oSelect").value;
 
-                switch (currentC) {
+                /** Switch Statement **/
+                switch (currentC) { //Current Currency
                     case"iUSD": interchange = parseFloat(mI.value) * 0.8116;
                     break;
                     case"iEUR": interchange = parseFloat(mI.value) * 1;
@@ -49,7 +55,7 @@
                     case"iHKD": interchange = parseFloat(mI.value) * 0.1034;
                 }
 
-                switch (aimC) {
+                switch (aimC) { //Aim Currency
                     case"oUSD": result = interchange / 0.8116;
                     break;
                     case"oEUR": result = interchange / 1;
@@ -58,9 +64,9 @@
                     break;
                     case"oHKD": result = interchange / 0.1034;
                 }
-
+                
+                /** Output Result **/
                 mO.value = result;
-
         }
 
     </script>
