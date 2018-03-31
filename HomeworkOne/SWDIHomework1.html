@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<div id="main">
+     <head>
+	      <h1>Club Register</h1>
+		  
+		  
+	 <style>
+	 button:hover,select:hover{
+	 border:solid 2px pink;
+	 }
+
+	 input:hover,select:hover{
+	 border:solid 2px pink;
+	 }
+
+	 #main{
+	 border:black 3px solid;
+	 width:45%;
+	 }
+	 
+	 #tips{
+	 border:black 3px solid;
+	 width:45%;
+	 }
+
+	 #verify {
+	 position:absolute;
+	 top:10px;
+	 right:10px;
+	 border:black 3px solid;
+	 width:45%;
+	 }
+	 
+	 </style>
+	 </head>
+	 
+	 <body>
+	 
+	 First name:<br/>
+	 <input type="text" name="firstn" id="firstn" onfocusin="ifirstn()" onfocusout="ofirstn()"><br/>
+	 
+	 Family name:<br/>
+	 <input type="text" name="familyn" id="familyn" onfocusin="ifamilyn()" onfocusout="ofamilyn()"><br/>
+	 
+	 Mobile number:<br/>
+	 <input type="text" name="mn" id="mn" onfocusin="imn()" onfocusout="omn()"><br/>
+	 
+	 Select your grade:<br>
+	 <select name="grade" id="grade" onfocusin="igrade()" onfocusout="ograde()">
+	    <option value="1">Year 1</option>
+	    <option value="2">Year 2</option>
+	    <option value="3">Year 3</option>
+	    <option value="4">Year 4</option>
+	 <select/>
+	 
+	 <br/>
+	 
+	 Your birthday:<br/>
+	 <input type="date" name="bd" id="bd" onfocusin="ibd()" onfocusout="obd()"><br/>
+	 
+	 <button type="button" onclick="submit()">Submit</button>
+</div>
+
+<br/>
+<br/>
+	 
+	 <div id="tips">
+	 Tips & hints
+	 <p id="ps"></p>
+	 </div>
+
+	 <div id="verify">
+		 <h1>Verify Information</h1>
+		 <p id="ver"></p>
+	 </div>
+	 
+	 <script>
+	 function ifirstn(){
+	     document.getElementById("ps").innerHTML = "请输入您的名";
+	     firstn.style.background = "lightgrey";
+	 }
+	 function ofirstn(){
+	     document.getElementById("ps").innerHTML = "";
+		 firstn.style.background = "white";
+	 }
+	 function ifamilyn(){
+	     document.getElementById("ps").innerHTML = "请输入您的姓氏";
+		 familyn.style.background = "lightgrey";
+	 }
+	 function ofamilyn(){
+	     document.getElementById("ps").innerHTML = "";
+		 familyn.style.background = "white";
+	 }
+	 function imn(){
+	     document.getElementById("ps").innerHTML = "请输入您的手机号码";
+		 mn.style.background = "lightgrey";
+	 }	 
+	 function omn(){
+	     document.getElementById("ps").innerHTML = "";
+		 mn.style.background = "white";
+	 }
+	 function igrade(){
+	     document.getElementById("ps").innerHTML = "请选择您的年级";
+	 }	 
+	 function ograde(){
+	     document.getElementById("ps").innerHTML = "";
+	 }
+	 function ibd(){
+	     document.getElementById("ps").innerHTML = "请选择您的生日";
+	 }	 
+	 function obd(){
+	     document.getElementById("ps").innerHTML = "";
+	 }
+	 function submit(){
+		 document.getElementById("ps").innerHTML = "Form Submitted";
+		 var x = document.getElementById("firstn").value;
+		 var y = document.getElementById("familyn").value;
+		 var z = document.getElementById("mn").value;
+		 var a = document.getElementById("grade").value;
+		 var b = document.getElementById("bd").value;
+		 document.getElementById("ver").innerHTML = "Dear " + x 
+		 + "  " + y + ", <br/>thank you for registering, we will contact you on " + z + "<br/><br/>Grade:" + a 
+		 + "<br/>Born:" + b + "<br/><input type='submit' value='confirm'>" ;
+		 
+	 }
+	 </script>
+	     
+	 </div>
+	 
