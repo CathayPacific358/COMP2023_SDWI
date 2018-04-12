@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head><h1>Class Exercise 2</h1></head>
+
+<style>
+	table {
+		border: 5px solid green;
+		border-collapse: collapse;
+	}
+
+	td{
+		border: 1px solid green;
+	}
+
+	th{
+		border: 1px solid green;
+	}
+</style>
+</html>
+
+<body>
+	<!-- Container -->
+	<div id="tb"></div>
+
+<script>
+	var tnum;//Table number, to tell the table is which one of the four
+	var irnum;//Individual Row Number, means the row number of each table
+
+	for (tnum = 0; tnum <= 3; tnum++) {
+        var table = "<table><tr><th>Number</th><th>Number x 10</th><th>Number ^ 2</th></tr>";
+
+        for (irnum = 1; irnum <= 5; irnum++) {//For instance, in the first table, tnum * 5 + irnum = 1, 2, 3, 4, 5. Or tnum * 5 + irnum = the Row of ALL TABLES
+            table += "<tr><td>" + (tnum * 5 + irnum) + "</td><td>" + (tnum * 5 + irnum) * 10 + "</td><td>" + (tnum * 5 + irnum)*(tnum * 5 + irnum) + "</td></tr>";
+
+            if (tnum * 5 + irnum == 17)//When the Row of ALL TABLES reaches 17, we break the loop
+                break;
+
+        }
+        table += "</table><br/>"
+        document.getElementById("tb").innerHTML += table;//Print the table
+    }
+</script>
+
+</body>
+
+</html>
