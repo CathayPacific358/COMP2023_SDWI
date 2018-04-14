@@ -5,17 +5,23 @@
     <title>Loan Calculator</title>
 
     <style>
-        .container{
+        body{
+            margin:100px 250px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #container{
             background-color: rgb(171,205,239);
+            border:3px solid rgb(54, 54, 245);
+            border-collapse: collapse;
         }
         .bottomBG{
             background-color: rgb(254,220,186);
+            height:500px;
         }
         #obtaininfo{
-            align:center;
             border:3px solid rgb(171,205,239);
             border-collapse: collapse;
-
+            width:600px;
         }
         tr{
             border:3px solid rgb(254,220,186);
@@ -53,164 +59,198 @@
         .DivBGCdown{
             background-color: rgb(171,205,239);
             width:100%;
+        }   
+        .leftCol{
+            float:left;
+            background-color: rgb(254,220,186);
+            margin:40px 80px;
         }
-        .DivWidth{
-            width:15%;
+        .rightCol{
+            float:right;
+            background-color: rgb(254,220,186);
+            margin:40px 80px;
         }
-        .moveLeft{
-            position:relative;
-            left:25%;
-            bottom:150px;
-        }
-        .outputTb{
-            display:inline;
+        #warning{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 15px;
+            color:red;
         }
     </style>
 </head>
 
 <body>
-
-<div class="container">
-
-    <h1>Loan Calculator</h1>
-    <table id="obtaininfo">
-        <tr>
-            <th colspan="3">Personal Details</th>
-        </tr>
-
-        <tr>
-            <td>First Name:<br/>
-                <input type="text" placeholder="Input your first name"/>
-            </td>
-
-            <td colspan="2">Family Name:<br/>
-                <input type="text" placeholder="Input your family name"/>
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan="3">E-mail:<br/>
-                <input type="text" >
-            </td>
-        </tr>
-
-        <tr>
-            <th colspan="3">Loan Request</th>
-        </tr>
-
-        <tr>
-            <td>Loan Amount(1000-10000):<br/>
-               <input id="LA" type="number" onfocusout="limit(LA)"/>
-            </td>
-
-            <td>For how many months(12-120):<br/>
-                <input id="Mon" type="number" onfocusout="limit(Mon)"/>
-            </td>
-
-            <td colspan="3">Start Payments(Within 6 months):<br/>
-                <select>
-                    <option>Jan</option>
-                    <option>Feb</option>
-                    <option>Mar</option>
-                    <option>Apr</option>
-                    <option>May</option>
-                    <option>Jun</option>
-                    <option>Jul</option>
-                    <option>Aug</option>
-                    <option>Sep</option>
-                    <option>Oct</option>
-                    <option>Nov</option>
-                    <option>Dec</option>
-                </select>
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan="3">
-                <input type="radio">No cover required</input><br/>
-                <input type="radio">Employment Cover - in the event you lose your job up to 3 months</input><br/>
-                <input type="radio">Part Cover - up to 12 months</input><br/>
-                <input type="radio">Full Cover - In the event you can not work again</input><br/>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <button type="submit">Calculate</button>
-            </td>
-
-            <td colspan="2">
-                Message:<br/>
-            </td>
-        </tr>
-    </table>
-
-
-    <br/>
-    <br/>
-
-<div class="bottomBG">
-        <p class="Info"><b>Dear</b></p>
+<div id="container" align="center">
+    <h2>Loan Calculator</h2>
 
     <div>
-        <div class="outputTb">
-            <div class="AR leftcol DivWidth DivBorderColor">
-                <div class="DivBGCup HeadColor">Amount Requested</div>
-                <div class="DivBGCdown DownColor"></div>
-            </div>
+        <table id="obtaininfo">
+            <tr>
+                <th colspan="3">Personal Details</th>
+            </tr>
 
-            <br/>
+            <tr>
+                <td>First Name:<br/>
+                    <input  id="firstn" type="text"/>
+                </td>
 
-            <div class="TI leftcol DivWidth DivBorderColor">
-                <div class="DivBGCup HeadColor">Total Interest</div>
-                <div class="DivBGCdown DownColor"></div>
-            </div>
+                <td colspan="2">Family Name:<br/>
+                    <input id="familyn" type="text"/>
+                </td>
+            </tr>
 
-            <br/>
+            <tr>
+                <td colspan="3">E-mail:<br/>
+                    <input id="email" type="text"/>
+                </td>
+            </tr>
 
-            <div class="In leftcol DivWidth DivBorderColor">
-                <div class="DivBGCup HeadColor">Insurance</div>
-                <div class="DivBGCdown DownColor"></div>
-            </div>
+            <tr>
+                <th colspan="3">Loan Request</th>
+            </tr>
 
-            <br/>
+            <tr>
+                <td>Loan Amount(1000-10000):<br/>
+                <input id="LA" type="number" onfocusout="LAlimit()"/>
+                </td>
 
-            <div class="TR leftcol DivWidth DivBorderColor">
-                <div class="DivBGCup HeadColor">Total Repayment</div>
-                <div class="DivBGCdown DownColor"></div>
-            </div>
-        </div>
-    </div>
+                <td>For how many months(12-120):<br/>
+                    <input id="Mon" type="number" onfocusout="Monlimit()"/>
+                </td>
 
-    <div class="moveLeft">
+                <td colspan="3">Start Payments(Within 6 months):<br/>
+                    <select id="SP">
+                        <option value="">Select Date</option>
+                        <option value="1">Jan</option>
+                        <option value="2">Feb</option>
+                        <option value="3">Mar</option>
+                        <option value="4">Apr</option>
+                        <option value="5">May</option>
+                        <option value="6">Jun</option>
+                        <option value="7">Jul</option>
+                        <option value="8">Aug</option>
+                        <option value="9">Sep</option>
+                        <option value="10">Oct</option>
+                        <option value="11">Nov</option>
+                        <option value="12">Dec</option>
+                    </select>
+                </td>
+            </tr>
 
-        <div class="outputTb">
-                <div class="TI leftcol DivWidth DivBorderColor">
-                    <div class="DivBGCup HeadColor">Monthly Payment</div>
-                    <div class="DivBGCdown DownColor"></div>
-                </div>
+            <tr>
+                <td colspan="3">
+                    <input id="cover" type="radio" name="cover" value="NC" checked>No cover required</input><br/>
+                    <input id="cover" type="radio" name="cover" value="EC">Employment Cover - in the event you lose your job up to 3 months</input><br/>
+                    <input id="cover" type="radio" name="cover" value="PC">Part Cover - up to 12 months</input><br/>
+                    <input id="cover" type="radio" name="cover" value="FC">Full Cover - In the event you can not work again</input><br/>
+                </td>
+            </tr>
 
-            <br/>
+            <tr>
+                <td>
+                    <button id="submit" type="submit" onclick="infocheck()">Calculate</button>
+                </td>
 
-                <div class="In leftcol DivWidth DivBorderColor">
-                    <div class="DivBGCup HeadColor">First Payment</div>
-                    <div class="DivBGCdown DownColor"></div>
+                <td colspan="3">
+                    Message:<br/>
+                    <p id="warning"></p>
+                </td>
+            </tr>
+        </table>
+
+
+        <br/>
+        <br/>
+
+    <div class="bottomBG">
+        <div class="Info"><b>Welcome to use the Loan Calculator!</b></div>
+
+        <div class="leftCol">
+            <div class="outputTb">
+                <div class="AR DivWidth DivBorderColor">
+                    <div class="DivBGCup HeadColor">Amount Requested</div>
+                    <div class="DivBGCdown DownColor">
+                            <br/>
+                            <p></p>
+                            <br/>
+                    </div>
                 </div>
 
                 <br/>
 
-                <div class="TR leftcol DivWidth DivBorderColor">
-                    <div class="DivBGCup HeadColor">Last Payment</div>
-                    <div class="DivBGCdown DownColor"></div>
+                <div class="TI DivWidth DivBorderColor">
+                    <div class="DivBGCup HeadColor">Total Interest</div>
+                    <div class="DivBGCdown DownColor">
+                            <br/>
+                            <p></p>
+                            <br/>
+                    </div>
+                </div>
+
+                <br/>
+
+                <div class="In DivWidth DivBorderColor">
+                    <div class="DivBGCup HeadColor">Insurance</div>
+                    <div class="DivBGCdown DownColor">
+                            <br/>
+                            <p></p>
+                            <br/>
+                    </div>
+                </div>
+
+                <br/>
+
+                <div class="TR DivWidth DivBorderColor">
+                    <div class="DivBGCup HeadColor">Total Repayment</div>
+                    <div class="DivBGCdown DownColor">
+                            <br/>
+                            <p></p>
+                            <br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rightCol">
+
+            <div class="outputTb">
+                    <div class="TI leftcol DivWidth DivBorderColor">
+                        <div class="DivBGCup HeadColor">Monthly Payment</div>
+                        <div class="DivBGCdown DownColor">
+                            <br/>
+                            <p></p>
+                            <br/>
+                        </div>
+                    </div>
+
+                <br/>
+
+                    <div class="In leftcol DivWidth DivBorderColor">
+                        <div class="DivBGCup HeadColor">First Payment</div>
+                        <div class="DivBGCdown DownColor">
+                            <br/>
+                            <p></p>
+                            <br/>
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <div class="TR leftcol DivWidth DivBorderColor">
+                        <div class="DivBGCup HeadColor">Last Payment</div>
+                        <div class="DivBGCdown DownColor">
+                            <br/>
+                            <p></p>
+                            <br/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
 <script>
-    function limit(LA){
+    function LAlimit(){
         var LAinput = document.getElementById("LA");
         if (LAinput.value > 10000){
             LAinput.value = 10000;
@@ -220,7 +260,7 @@
         }
     }
 
-    function limit(Mon){
+    function Monlimit(){
         var Moninput = document.getElementById("Mon");
         if (Moninput.value > 120){
             Moninput.value = 120;
@@ -229,6 +269,55 @@
             Moninput.value = 12;
         }
     }
+
+    function infocheck(){
+        var text = "";
+        var errorNum = 0;
+        var nowDate = new Date().getMonth();
+        var selDate = Number(document.getElementById("SP").value);
+        var name = document.getElementById("firstn").value;
+        if((selDate - nowDate + 1) > 6){
+            text += "WARNING: Start payments date should be select within 6 months.<br/>";
+            errorNum = 1;
+        }
+        
+        if(document.getElementById("firstn").value.length == 0){
+            text += "WARNING: Please input your first name.<br/>";
+            errorNum = 1;
+        }
+
+        if(document.getElementById("familyn").value.length == 0){
+            text += "WARNING: Please input your family name.<br/>";
+            errorNum = 1;
+        }
+
+        if(document.getElementById("email").value.length == 0){
+            text += "WARNING: Please input your email.<br/>";
+            errorNum = 1;
+        }
+
+        if(document.getElementById("SP").value.length == 0){
+            text += "WARNING: Please select start payments date.<br/>";
+            errorNum = 1;
+        }
+
+        if(document.getElementById("LA").value.length == 0){
+            text += "WARNING: Please input loan amount.<br/>";
+        }
+
+        if(document.getElementById("Mon").value.length == 0){
+            text += "WARNING: Please input loan month length.<br/>"
+        }
+
+        if(errorNum == 1){
+            document.getElementById("warning").innerHTML = text;
+        }
+
+        else document.getElementById("warning").innerHTML = "Success!";
+    }
+
+
+
 
     
 </script>
