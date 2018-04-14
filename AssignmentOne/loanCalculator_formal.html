@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Calculator</title>
+
+    <style>
+        .container{
+            background-color: rgb(171,205,239);
+        }
+        .bottomBG{
+            background-color: rgb(254,220,186);
+        }
+        #obtaininfo{
+            align:center;
+            border:3px solid rgb(171,205,239);
+            border-collapse: collapse;
+
+        }
+        tr{
+            border:3px solid rgb(254,220,186);
+            border-collapse: collapse;
+        }
+        td{
+            border:3px solid rgb(254,220,186);
+            border-collapse: collapse;
+        }
+        th{
+            border:3px solid rgb(254,220,186);
+            border-collapse: collapse;
+        }
+        h1{
+            text-align: center;
+        }
+        .Info{
+            color:rgb(34,114,43);
+            font-size: 40px;
+        }
+        .HeadColor{
+            text-align:center;
+            color:rgb(255,255,0);
+        }
+        .DownColor{
+            color:white;
+        }
+        .DivBorderColor{
+            border:3px solid rgb(0,0,139);
+        }
+        .DivBGCup{
+            background-color: rgb(0,0,139);
+            width:100%;
+        }
+        .DivBGCdown{
+            background-color: rgb(171,205,239);
+            width:100%;
+        }
+        .DivWidth{
+            width:15%;
+        }
+        .moveLeft{
+            position:relative;
+            left:25%;
+            bottom:150px;
+        }
+        .outputTb{
+            display:inline;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Loan Calculator</h1>
+    <table id="obtaininfo">
+        <tr>
+            <th colspan="3">Personal Details</th>
+        </tr>
+
+        <tr>
+            <td>First Name:<br/>
+                <input type="text" placeholder="Input your first name"/>
+            </td>
+
+            <td colspan="2">Family Name:<br/>
+                <input type="text" placeholder="Input your family name"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3">E-mail:<br/>
+                <input type="text" >
+            </td>
+        </tr>
+
+        <tr>
+            <th colspan="3">Loan Request</th>
+        </tr>
+
+        <tr>
+            <td>Loan Amount(1000-10000):<br/>
+               <input id="LA" type="number" onfocusout="limit(LA)"/>
+            </td>
+
+            <td>For how many months(12-120):<br/>
+                <input id="Mon" type="number" onfocusout="limit(Mon)"/>
+            </td>
+
+            <td colspan="3">Start Payments(Within 6 months):<br/>
+                <select>
+                    <option>Jan</option>
+                    <option>Feb</option>
+                    <option>Mar</option>
+                    <option>Apr</option>
+                    <option>May</option>
+                    <option>Jun</option>
+                    <option>Jul</option>
+                    <option>Aug</option>
+                    <option>Sep</option>
+                    <option>Oct</option>
+                    <option>Nov</option>
+                    <option>Dec</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                <input type="radio">No cover required</input><br/>
+                <input type="radio">Employment Cover - in the event you lose your job up to 3 months</input><br/>
+                <input type="radio">Part Cover - up to 12 months</input><br/>
+                <input type="radio">Full Cover - In the event you can not work again</input><br/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button type="submit">Calculate</button>
+            </td>
+
+            <td colspan="2">
+                Message:<br/>
+            </td>
+        </tr>
+    </table>
+
+
+    <br/>
+    <br/>
+
+<div class="bottomBG">
+        <p class="Info"><b>Dear</b></p>
+
+    <div>
+        <div class="outputTb">
+            <div class="AR leftcol DivWidth DivBorderColor">
+                <div class="DivBGCup HeadColor">Amount Requested</div>
+                <div class="DivBGCdown DownColor"></div>
+            </div>
+
+            <br/>
+
+            <div class="TI leftcol DivWidth DivBorderColor">
+                <div class="DivBGCup HeadColor">Total Interest</div>
+                <div class="DivBGCdown DownColor"></div>
+            </div>
+
+            <br/>
+
+            <div class="In leftcol DivWidth DivBorderColor">
+                <div class="DivBGCup HeadColor">Insurance</div>
+                <div class="DivBGCdown DownColor"></div>
+            </div>
+
+            <br/>
+
+            <div class="TR leftcol DivWidth DivBorderColor">
+                <div class="DivBGCup HeadColor">Total Repayment</div>
+                <div class="DivBGCdown DownColor"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="moveLeft">
+
+        <div class="outputTb">
+                <div class="TI leftcol DivWidth DivBorderColor">
+                    <div class="DivBGCup HeadColor">Monthly Payment</div>
+                    <div class="DivBGCdown DownColor"></div>
+                </div>
+
+            <br/>
+
+                <div class="In leftcol DivWidth DivBorderColor">
+                    <div class="DivBGCup HeadColor">First Payment</div>
+                    <div class="DivBGCdown DownColor"></div>
+                </div>
+
+                <br/>
+
+                <div class="TR leftcol DivWidth DivBorderColor">
+                    <div class="DivBGCup HeadColor">Last Payment</div>
+                    <div class="DivBGCdown DownColor"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function limit(LA){
+        var LAinput = document.getElementById("LA");
+        if (LAinput.value > 10000){
+            LAinput.value = 10000;
+        }
+        else if (LAinput.value < 1000){
+            LAinput.value = 1000;
+        }
+    }
+
+    function limit(Mon){
+        var Moninput = document.getElementById("Mon");
+        if (Moninput.value > 120){
+            Moninput.value = 120;
+        }
+        else if (Moninput.value < 12){
+            Moninput.value = 12;
+        }
+    }
+
+    
+</script>
+</body>
+</html>
