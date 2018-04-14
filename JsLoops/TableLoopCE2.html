@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>Class Exercise 2</head>
+</html>
+
+<body>
+	<table border="1" id="tb"></table>
+
+<script>
+    var table = "<tr><th>Number</th><th>Number x 10</th><th>Number ^ 2</th></tr>";
+    var num;
+
+        for( num = 1; num <= 10; num++){
+		    table += "<tr><td>" + num + "</td><td>" + num * 10 + "</td><td>" + num**2 + "</td></tr>";
+	    }
+	    document.getElementById("tb").innerHTML = table;
+</script>
+
+</body>
+
+</html>
