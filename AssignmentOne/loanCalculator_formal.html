@@ -6,7 +6,7 @@
 
     <style>
         body{
-            margin:100px 250px;
+            margin:50px 200px;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
         #container{
@@ -64,13 +64,13 @@
             float:left;
             background-color: rgb(254,220,186);
             margin:40px 80px;
-            padding-left: 350px;
+            padding-left: 100px;
         }
         .rightCol{
             float:right;
             background-color: rgb(254,220,186);
             margin:40px 80px;
-            padding-right:350px;
+            padding-right:100px;
         }
         #warning{
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -116,7 +116,7 @@
                 </td>
 
                 <td>For how many months(12-120):<br/>
-                    <input id="Mon" type="number" onfocusout="Monlimit()"/>
+                    <input id="Mon" type="number" onfocusout="Monlimit()" value=""/>
                 </td>
 
                 <td colspan="3">Start Payments(Within 6 months):<br/>
@@ -140,10 +140,12 @@
 
             <tr>
                 <td colspan="3">
-                    <input id="cover" type="radio" name="cover" value="NC" checked>No cover required</input><br/>
-                    <input id="cover" type="radio" name="cover" value="EC">Employment Cover - in the event you lose your job up to 3 months</input><br/>
-                    <input id="cover" type="radio" name="cover" value="PC">Part Cover - up to 12 months</input><br/>
-                    <input id="cover" type="radio" name="cover" value="FC">Full Cover - In the event you can not work again</input><br/>
+                    <form id="cover"/>
+                    <input type="radio" name="Cpattern" value="NC" checked>No cover required</input><br/>
+                    <input type="radio" name="Cpattern" value="EC">Employment Cover - in the event you lose your job up to 3 months</input><br/>
+                    <input type="radio" name="Cpattern" value="PC">Part Cover - up to 12 months</input><br/>
+                    <input type="radio" name="Cpattern" value="FC">Full Cover - In the event you can not work again</input><br/>
+                    </form>
                 </td>
             </tr>
 
@@ -183,7 +185,7 @@
                     <div class="DivBGCup HeadColor">Total Interest</div>
                     <div class="DivBGCdown DownColor">
                             <br/>
-                            <p></p>
+                            <div id="TID"></div>
                             <br/>
                     </div>
                 </div>
@@ -194,7 +196,7 @@
                     <div class="DivBGCup HeadColor">Insurance</div>
                     <div class="DivBGCdown DownColor">
                             <br/>
-                            <p></p>
+                            <div id="InD"></div>
                             <br/>
                     </div>
                 </div>
@@ -205,7 +207,7 @@
                     <div class="DivBGCup HeadColor">Total Repayment</div>
                     <div class="DivBGCdown DownColor">
                             <br/>
-                            <p></p>
+                            <div id="TRD"></div>
                             <br/>
                     </div>
                 </div>
@@ -254,6 +256,58 @@
 <script>
     var errorNum = 0
 
+
+
+        function displayAR() {
+                var AR = document.getElementById("LA").value;
+                document.getElementById("LAD").innerHTML = AR;
+                return AR;
+            }
+
+        function getInsurance(){
+                var InsuranceFee;
+                var coverVal = document.getElementById("cover").Cpattern.value;
+                switch(coverVal){
+                    case "NC": InsuranceFee = 0;
+                    break;
+                    case "EC": InsuranceFee = 100;
+                    break;
+                    case "PC": InsuranceFee = 150;
+                    break;
+                    case "FC": InsuranceFee = 300;
+                }
+
+                document.getElementById("InD").innerHTML = InsuranceFee;
+                return InsuranceFee;
+            }
+
+        function totalInterest(){
+            var loanLength = Number(document.getElementById("Mon").value);
+            var In = 0;
+            var LA = Number(document.getElementById("LA").value);
+
+            for(; loanLength > 0 ; loanLength--){
+                if(loanLength <= 36){
+                    In += (In + LA) * 0.022;
+                }
+                else if(loanLength > 36 && loanLength <= 60){
+                    In += (In + LA) * 0.033;
+                }
+                else if(loanLength > 60 && loanLength <= 84){
+                    In += (In + LA) * 0.044;
+                }
+                else
+                    In += (In + LA) * 0.055;
+            }
+            document.getElementById("TID").innerHTML = In.toFixed(2);
+            return In
+        } 
+
+    function calculateRepayments(){
+        var CR = displayAR() + getInsurance() + totalInterest();
+        document.getElementById("TRD").innerHTML = CR;
+    }
+
     function LAlimit(){
         var LAinput = document.getElementById("LA");
         if (LAinput.value > 10000){
@@ -280,7 +334,7 @@
         var nowDate = new Date().getMonth();
         var selDate = Number(document.getElementById("SP").value);
         var name = document.getElementById("firstn").value;
-        if((selDate - nowDate + 1) > 6){
+        if((selDate - (nowDate + 1)) > 6 || selDate < nowDate + 1){
             text += "WARNING: Start payments date should be select within 6 months.<br/>";
             errorNum = 1;
         }
@@ -317,19 +371,15 @@
             document.getElementById("warning").innerHTML = text
         }
 
-        else document.getElementById("warning").innerHTML = "Success!";
+        else {document.getElementById("warning").innerHTML = "Success!";
              document.getElementById("Info").innerHTML = "Dear " + name +", this is your loan calculation";
              errorNum = 0;
 
-        function displayAR() {
-            if (errorNum == 0) {
-                var AR = document.getElementById("LA").value;
-                document.getElementById("LAD").innerText = AR;
+             displayAR();
+             getInsurance();
+             totalInterest();
             }
         }
-    }
-
-
 
 
 
