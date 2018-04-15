@@ -300,12 +300,12 @@
                     In += (In + LA) * 0.055;
             }
             document.getElementById("TID").innerHTML = In.toFixed(2);
-            return In
-        } 
+            return In;
+        }
 
     function calculateRepayments(){
-        var CR = displayAR() + getInsurance() + totalInterest();
-        document.getElementById("TRD").innerHTML = CR;
+        var CR = Number(displayAR()) + Number(getInsurance()) + Number(totalInterest());
+        document.getElementById("TRD").innerHTML = CR.toFixed(2);
     }
 
     function LAlimit(){
@@ -328,59 +328,56 @@
         }
     }
 
-    function infocheck(){
+    function infocheck() {
         var text = "";
 
         var nowDate = new Date().getMonth();
         var selDate = Number(document.getElementById("SP").value);
         var name = document.getElementById("firstn").value;
-        if((selDate - (nowDate + 1)) > 6 || selDate < nowDate + 1){
+        if ((selDate - (nowDate + 1)) > 6 || selDate < nowDate + 1) {
             text += "WARNING: Start payments date should be select within 6 months.<br/>";
             errorNum = 1;
         }
-        
-        if(document.getElementById("firstn").value.length == 0){
+
+        if (document.getElementById("firstn").value.length == 0) {
             text += "WARNING: Please input your first name.<br/>";
             errorNum = 1;
         }
 
-        if(document.getElementById("familyn").value.length == 0){
+        if (document.getElementById("familyn").value.length == 0) {
             text += "WARNING: Please input your family name.<br/>";
             errorNum = 1;
         }
 
-        if(document.getElementById("email").value.length == 0){
+        if (document.getElementById("email").value.length == 0) {
             text += "WARNING: Please input your email.<br/>";
             errorNum = 1;
         }
 
-        if(document.getElementById("SP").value.length == 0){
-            text += "WARNING: Please select start payments date.<br/>";
+        if (document.getElementById("LA").value.length == 0) {
+            text += "WARNING: Please input loan amount.<br/>";
             errorNum = 1;
         }
 
-        if(document.getElementById("LA").value.length == 0){
-            text += "WARNING: Please input loan amount.<br/>";
+        if (document.getElementById("Mon").value.length == 0) {
+            text += "WARNING: Please input loan month length.<br/>";
+            errorNum = 1;
         }
 
-        if(document.getElementById("Mon").value.length == 0){
-            text += "WARNING: Please input loan month length.<br/>"
-        }
-
-        if(errorNum == 1){
+        if (errorNum == 1) {
             document.getElementById("warning").innerHTML = text
         }
 
-        else {document.getElementById("warning").innerHTML = "Success!";
-             document.getElementById("Info").innerHTML = "Dear " + name +", this is your loan calculation";
-             errorNum = 0;
+        else if(text.length == 0){
+            displayAR();
+            getInsurance();
+            totalInterest();
+            calculateRepayments();
+            document.getElementById("warning").innerHTML = "Success!";
+            document.getElementById("Info").innerHTML = "Dear " + name + ", this is your loan calculation";
 
-             displayAR();
-             getInsurance();
-             totalInterest();
-            }
         }
-
+    }
 
 
 
