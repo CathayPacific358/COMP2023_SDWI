@@ -21,7 +21,7 @@
         #obtaininfo{
             border:3px solid rgb(171,205,239);
             border-collapse: collapse;
-            width:600px;
+            width:700px;
         }
         tr{
             border:3px solid rgb(254,220,186);
@@ -38,7 +38,7 @@
         h1{
             text-align: center;
         }
-        .Info{
+        #Info{
             color:rgb(34,114,43);
             font-size: 40px;
         }
@@ -64,11 +64,13 @@
             float:left;
             background-color: rgb(254,220,186);
             margin:40px 80px;
+            padding-left: 350px;
         }
         .rightCol{
             float:right;
             background-color: rgb(254,220,186);
             margin:40px 80px;
+            padding-right:350px;
         }
         #warning{
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -162,7 +164,7 @@
         <br/>
 
     <div class="bottomBG">
-        <div class="Info"><b>Welcome to use the Loan Calculator!</b></div>
+        <div id="Info"><b>Welcome to use the Loan Calculator!</b></div>
 
         <div class="leftCol">
             <div class="outputTb">
@@ -170,7 +172,7 @@
                     <div class="DivBGCup HeadColor">Amount Requested</div>
                     <div class="DivBGCdown DownColor">
                             <br/>
-                            <p></p>
+                            <div id="LAD"></div>
                             <br/>
                     </div>
                 </div>
@@ -250,6 +252,8 @@
 </div>
 
 <script>
+    var errorNum = 0
+
     function LAlimit(){
         var LAinput = document.getElementById("LA");
         if (LAinput.value > 10000){
@@ -272,7 +276,7 @@
 
     function infocheck(){
         var text = "";
-        var errorNum = 0;
+
         var nowDate = new Date().getMonth();
         var selDate = Number(document.getElementById("SP").value);
         var name = document.getElementById("firstn").value;
@@ -310,11 +314,23 @@
         }
 
         if(errorNum == 1){
-            document.getElementById("warning").innerHTML = text;
+            document.getElementById("warning").innerHTML = text
         }
 
         else document.getElementById("warning").innerHTML = "Success!";
+             document.getElementById("Info").innerHTML = "Dear " + name +", this is your loan calculation";
+             errorNum = 0;
+
+        function displayAR() {
+            if (errorNum == 0) {
+                var AR = document.getElementById("LA").value;
+                document.getElementById("LAD").innerText = AR;
+            }
+        }
     }
+
+
+
 
 
 
