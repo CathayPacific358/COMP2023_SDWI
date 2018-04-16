@@ -344,13 +344,21 @@
         var loanLength = Number(document.getElementById("Mon").value);
         var nowMonth = new Date().getMonth() + 1;
         var nowYear = new Date().getFullYear();
-        var coverVal = document.getElementById("SP").value;
+        var MonSel = document.getElementById("SP").value;
         var FPMonth;
         var FPYear;
         var LPMonth;
         var LPYear;
 
-        FPMonth =
+        if((MonSel + nowMonth) > 12){
+            FPYear = nowYear + 1;
+        }
+        else
+            FPYear = nowYear;
+
+        FPMonth = Number(MonSel);
+        document.getElementById("FPD").innerText = MonTrans[(FPMonth.toFixed(0) - 1)] + ", " + FPYear.toFixed(0);
+
 
         LPMonth = (nowMonth + loanLength)/12;
         LPYear = nowYear + ((nowMonth + loanLength)/12);
@@ -364,7 +372,10 @@
         var nowDate = new Date().getMonth();
         var selDate = Number(document.getElementById("SP").value);
         var name = document.getElementById("firstn").value;
-        if ((selDate - (nowDate + 1)) > 6 || selDate < nowDate + 1) {
+        if ((selDate + nowDate - 1) > 12) {
+            if((12 - nowDate) + selDate > 6){
+
+        }
             text += "WARNING: Start payments date should be select within 6 months.<br/>";
             errorNum = 1;
         }
