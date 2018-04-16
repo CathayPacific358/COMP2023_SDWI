@@ -260,16 +260,18 @@
 
 
 
-
+        //Get data from Loan Amount input, and name the var as AR
         function displayAR() {
                 var AR = document.getElementById("LA").value;
                 document.getElementById("LAD").innerHTML = AR;
-                return AR;
+                return AR;//return the function value for later
             }
 
+        //Get data from cover selection, and name the var as InsuranceFee
         function getInsurance(){
                 var InsuranceFee;
                 var coverVal = document.getElementById("cover").Cpattern.value;
+                //Use switch to read the selection
                 switch(coverVal){
                     case "NC": InsuranceFee = 0;
                     break;
@@ -281,15 +283,17 @@
                 }
 
                 document.getElementById("InD").innerHTML = InsuranceFee;
-                return InsuranceFee;
+                return InsuranceFee;//return the function value for later
             }
 
+        //Get data from loan length, and calculate the total interest
         function totalInterest(){
             var loanLength = Number(document.getElementById("Mon").value);
             var In = 0;
             var LA = Number(document.getElementById("LA").value);
 
-            for(; loanLength > 0 ; loanLength--){
+            //The var "In" stands for the interest
+            for(; loanLength > 0 ; loanLength--){//Use decrease to ensure times for counting interest
                 if(loanLength <= 36){
                     In += (In + LA) * 0.022;
                 }
@@ -303,15 +307,18 @@
                     In += (In + LA) * 0.055;
             }
             document.getElementById("TID").innerHTML = In.toFixed(2);
-            return In;
+            return In;//return the function value for later
         }
 
+        //Add up values to calculate the total repayments
     function calculateRepayments(){
-        var CR = Number(displayAR()) + Number(getInsurance()) + Number(totalInterest());
+        var CR = Number(displayAR()) + Number(getInsurance()) + Number(totalInterest());//Use the return result from the former functions
         document.getElementById("TRD").innerHTML = CR.toFixed(2);
-        return CR;
+        return CR;//return the function value for later
     }
 
+    /*To limit the Loan Amount input, not allow them to lower than 1000 or exceed 10000*/
+    /*If lower than 1000, will automatically choose 1000; if larger than 10000, will automatically choose 10000*/
     function LAlimit(){
         var LAinput = document.getElementById("LA");
         if (LAinput.value > 10000){
@@ -322,6 +329,8 @@
         }
     }
 
+    /*To limit the loan length input, not allow them to lower than 12 months or 120 months*/
+    /*If lower than 12, will automatically choose 12; if larger than 120, will automatically choose 120*/
     function Monlimit(){
         var Moninput = document.getElementById("Mon");
         if (Moninput.value > 120){
@@ -332,14 +341,18 @@
         }
     }
 
+    //Calculate payment per month
     function MonthlyPayment(){
-        var TP = calculateRepayments();
+        var TP = calculateRepayments();//Use the return result from the former functions
         var loanLength = Number(document.getElementById("Mon").value);
         var MP = TP / loanLength;
         document.getElementById("MPD").innerText = MP.toFixed(2);
     }
 
+
+    //Calculate the first and the last payment
     function FirstAndLastPayment(){
+        //Use array to associate number with month like Jan, Feb, etc
         var MonTrans = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         var loanLength = Number(document.getElementById("Mon").value);
         var nowMonth = new Date().getMonth() + 1;
@@ -350,35 +363,47 @@
         var LPMonth;
         var LPYear;
 
-        if((MonSel + nowMonth) > 12){
+        //To check the start date selected is in this year or the next year
+        if(MonSel < nowMonth){//if the month selected is smaller than the data get from now, the month select is from next year
             FPYear = nowYear + 1;
         }
         else
             FPYear = nowYear;
 
+        //To print the First Payment Date
         FPMonth = Number(MonSel);
         document.getElementById("FPD").innerText = MonTrans[(FPMonth.toFixed(0) - 1)] + ", " + FPYear.toFixed(0);
 
-
+        //To print the Last Payment Date
         LPMonth = (nowMonth + loanLength)/12;
         LPYear = nowYear + ((nowMonth + loanLength)/12);
-
         document.getElementById("LPD").innerText = MonTrans[(LPMonth.toFixed(0) - 1)] + ", " + LPYear.toFixed(0);
     }
 
+    //A onclick function to initiate all function above
     function infocheck() {
         var text = "";
         var errorNum = 0;
-        var nowDate = new Date().getMonth();
-        var selDate = Number(document.getElementById("SP").value);
-        var name = document.getElementById("firstn").value;
-        if ((selDate + nowDate - 1) > 12) {
-            if((12 - nowDate) + selDate > 6){
+        var nowDate = new Date().getMonth();//get now date(from 0 - 11)
+        var selDate = Number(document.getElementById("SP").value);//get selected date
+        var name = document.getElementById("firstn").value;//get first name
 
-        }
+        //Start Payment Date Check.
+        if ((selDate + nowDate + 1) > 12) {//nowDate + 1 = the real date because new Date() gets only from 0 - 11
+                                            //if selected date from NEXT YEAR , selDate + nowDate + 1 will exceed 12
+
+            //
+            if((12 - nowDate) + selDate > 6){
             text += "WARNING: Start payments date should be select within 6 months.<br/>";
             errorNum = 1;
+            }
         }
+        else//if the selected date is in THIS YEAR
+            if((selDate - nowDate + 1) > 6) {
+                text += "WARNING: Start payments date should be select within 6 months.<br/>";
+                errorNum = 1;
+            }
+
 
         if (document.getElementById("firstn").value.length == 0) {
             text += "WARNING: Please input your first name.<br/>";
