@@ -77,6 +77,9 @@
             font-size: 15px;
             color:red;
         }
+        #MPD{
+            font-size:40px;
+        }
     </style>
 </head>
 
@@ -221,7 +224,7 @@
                         <div class="DivBGCup HeadColor">Monthly Payment</div>
                         <div class="DivBGCdown DownColor">
                             <br/>
-                            <p></p>
+                            <div id="MPD"></div>
                             <br/>
                         </div>
                     </div>
@@ -232,7 +235,7 @@
                         <div class="DivBGCup HeadColor">First Payment</div>
                         <div class="DivBGCdown DownColor">
                             <br/>
-                            <p></p>
+                            <div id="FPD"></div>
                             <br/>
                         </div>
                     </div>
@@ -243,7 +246,7 @@
                         <div class="DivBGCup HeadColor">Last Payment</div>
                         <div class="DivBGCdown DownColor">
                             <br/>
-                            <p></p>
+                            <div id="LPD"></div>
                             <br/>
                         </div>
                     </div>
@@ -254,7 +257,7 @@
 </div>
 
 <script>
-    var errorNum = 0
+
 
 
 
@@ -306,6 +309,7 @@
     function calculateRepayments(){
         var CR = Number(displayAR()) + Number(getInsurance()) + Number(totalInterest());
         document.getElementById("TRD").innerHTML = CR.toFixed(2);
+        return CR;
     }
 
     function LAlimit(){
@@ -328,9 +332,35 @@
         }
     }
 
+    function MonthlyPayment(){
+        var TP = calculateRepayments();
+        var loanLength = Number(document.getElementById("Mon").value);
+        var MP = TP / loanLength;
+        document.getElementById("MPD").innerText = MP.toFixed(2);
+    }
+
+    function FirstAndLastPayment(){
+        var MonTrans = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var loanLength = Number(document.getElementById("Mon").value);
+        var nowMonth = new Date().getMonth() + 1;
+        var nowYear = new Date().getFullYear();
+        var coverVal = document.getElementById("SP").value;
+        var FPMonth;
+        var FPYear;
+        var LPMonth;
+        var LPYear;
+
+        FPMonth =
+
+        LPMonth = (nowMonth + loanLength)/12;
+        LPYear = nowYear + ((nowMonth + loanLength)/12);
+
+        document.getElementById("LPD").innerText = MonTrans[(LPMonth.toFixed(0) - 1)] + ", " + LPYear.toFixed(0);
+    }
+
     function infocheck() {
         var text = "";
-
+        var errorNum = 0;
         var nowDate = new Date().getMonth();
         var selDate = Number(document.getElementById("SP").value);
         var name = document.getElementById("firstn").value;
@@ -373,6 +403,8 @@
             getInsurance();
             totalInterest();
             calculateRepayments();
+            MonthlyPayment();
+            FirstAndLastPayment();
             document.getElementById("warning").innerHTML = "Success!";
             document.getElementById("Info").innerHTML = "Dear " + name + ", this is your loan calculation";
 
