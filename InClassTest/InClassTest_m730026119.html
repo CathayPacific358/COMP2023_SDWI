@@ -1,0 +1,79 @@
+<html>
+<head>
+    <h2>Credit Card Payoff Task</h2>
+</head>
+
+<body>
+<div id="container">
+    <div id="leftRoll">
+    <p>Title</p>
+
+    <form>
+        <input type="radio" name="callSelect">Ms</input>
+        <input type="radio" name="callSelect">Mr</input>
+        <input type="radio" name="callSelect">Dr</input>
+        <input type="radio" name="callSelect">Prof</input>
+    </form>
+
+    First Name:<br/>
+    <input id="firstn" type="text"/><br/>
+
+    Family Name:<br/>
+    <input id="familyn" type="text"/></br/>
+
+    Remaining Amount:<br/>
+    <input id="RA" type="number"/></br/>
+
+    Monthly Payment:<br/>
+    <input id="MP" type="number"/></br/>
+
+    Last Payment:<br/>
+    <input id="LP" type="text" value=""readonly/></br/>
+
+    Number of Payments<br/>
+    <input id="NoP" type="text" value=""readonly/></br/>
+
+    <br/>
+
+        <button id="sub" type="submit" onclick="submit()">Confirm</button>
+    </div>
+
+    <div id="commentBox">
+        <div id="comment"></div>
+    </div>
+
+    <div id="test"></div>
+</div>
+
+<script>
+    function LastPayment(){
+        var RA = Number(document.getElementById("RA").value);
+        var MP = Number(document.getElementById("MP").value);
+        var LP = document.getElementById("LP").value;
+
+        for(;RA >= 0 && RA <= MP; RA = RA - MP) {
+            RA = (RA * 0.019) + RA;
+        }
+
+        if(LP.length == 0){
+            document.getElementById("LP").value = "ERROR";
+        }
+        else
+            document.getElementById("LP").value = RA.toFixed(2);
+    }
+
+
+    function printComments(){
+        var fn = document.getElementById("firstn").value;
+        var famn = document.getElementById("familyn").value;
+
+        document.getElementById("comment").innerText = "Dear " + fn + " " + famn + "paying " + LP + " per month will take " + NumOfPay + " months and your Last Payment is " + LP;
+    }
+
+    function submit(){
+        LastPayment();
+        printComments();
+    }
+</script>
+</body>
+</html>
