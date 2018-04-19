@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <h2>Array Processing</h2>
+    <style>
+        body{
+            margin:100px 450px;
+            background-color: #c7d9ff;
+        }
+        #clicks{
+            background-color: #cacacc;
+            padding: 20px;
+            width:200px;
+            float:left;
+        }
+        #NameList{
+            background-color: #ffb07c;
+            padding:20px;
+            width:200px;
+            float:right;
+        }
+
+    </style>
+</head>
+<body>
+<div id="clicks">
+    <input id="IF" type="text" placeholder="Input Field">
+    <br/>
+    <br/>
+    <button id="AN" onclick="AddName()">Add Name</button>
+    <br/>
+    <br/>
+    <button id="RN" onclick="RemoveName()">Remove Name</button>
+    <br/>
+    <br/>
+    <button id="sAZ" onclick="sortAtoZ()">Sort A-Z</button>
+    <br/>
+    <br/>
+    <button id="sZA" onclick="sortZtoA()">Sort Z-A</button>
+    <br/>
+    <br/>
+</div>
+
+
+<br/>
+<div id="NameList">Name List:
+<p id="NL"></p>
+
+<p id="notice"></p>
+</div>
+<script>
+    var names = [];
+
+    function outputBox() {
+        SendNotice();//use function to send notice
+
+        var nLen = names.length;
+        var text, i;
+
+        //build up a order list
+        text = "<ol>";
+        for (i = 0; i < nLen; i++) {
+            text += "<li>" + names[i] + "</li>";
+        }
+        text += "</ol>";
+        document.getElementById("NL").innerHTML = text;
+    }
+
+	function SendNotice(){
+		var nLen = names.length;
+		document.getElementById("notice").innerText = "The list has " + nLen + " names.";
+	}
+
+    function AddName() {
+
+        var ip = document.getElementById("IF").value;
+        names.push(ip);
+        outputBox();
+    }
+
+    function RemoveName(){
+        var j , n, k;//use j to identify the element value, use n to store the names[j],
+        var nLen = names.length;
+        var compareName = document.getElementById("IF").value;//the input that should be deleted
+
+
+        for( j = 0; j < nLen; j++){//to check which is the one that is wanted to deleted
+            if ( compareName == names[j]) {
+                n = names [j];//store the input
+                for ( k = j; k < nLen; k++){//make the next element to replace the former element, which will let the element wanted to deleted become the last one
+                    names[k] = names[k+1];
+                }
+                names.pop();//pop and remove the last one
+            }
+        }
+        outputBox();
+	}
+
+    function sortAtoZ() {
+        names.sort();
+        outputBox()
+    }
+
+    function sortZtoA() {
+        names.reverse();
+        outputBox();
+    }
+
+
+
+</script>
+</body>
