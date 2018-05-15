@@ -9,6 +9,10 @@
     table{
         border-collapse: collapse;;
     }
+
+    body{
+        font-family:"Calibri Light";
+    }
 </style>
 </head>
 
@@ -18,6 +22,7 @@
 $nameErr = $DoBErr = $UIDErr = $DPErr = $genderErr = $FTErr = "";
 $name = $DoB = $UID = $DP = $gender = $fav = "";
 $progTitle = $DPoutput = $fruitiac = $DoBoutput = "";
+$dd = $mm = "";
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -25,6 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $nameErr = "*Name is required";
     }
     else{
+        //set pattern for name input
         if(!preg_match("/^[a-zA-Z ]*$/", $_POST["name"])){
             $nameErr = "*Only letters and white space allowed";
             }
@@ -34,18 +40,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-
     if(empty($_POST["DoB"])){
         $DoBErr = "*Date of birth is required";
     }
     else{
+        $DoB = $_POST["DoB"];
+
+        //assign value to mm and dd in forms of month and day respectively
+        $mm = date("m", strtotime($_POST["DoB"]));
+        $dd = date("d", strtotime($_POST["DoB"]));
+
         $DoBoutput = date("d F Y", strtotime($_POST["DoB"]));
+        $fruitiac = fruitiac($mm,$dd);
     }
 
     if(empty($_POST["UID"])){
         $UIDErr = "*UIC ID is required";
     }
     else{
+    //set pattern for uic id input
         if(!preg_match("/^[a-z]{1}[0-9]{9}$/", $_POST["UID"])){
             $UIDErr = "*UIC ID is required";
         }
@@ -66,18 +79,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $DPErr = "*DST Programme is required";
     }
     else{
-        if(!preg_match("/^[A-Z]{3,4}$/", $_POST["DP"])){
+    //set pattern for programme input
+        if(!preg_match("/^[A-Z]{2,4}$/", $_POST["DP"])){
             $DPErr = "*DST Programme is required";
         }
         else {
-            $DP = outputTable($_POST["DP"]);
-            $fullname = prog($DP);
-            $DPoutput = $fullname . "(" . $DP . ")";
+
+            $fullname = prog($_POST["DP"]);
+            if ($fullname == "0") {
+                $DPErr = "*DST Programme is required";
+            }
+            else {
+                $DP = outputTable($_POST["DP"]);
+                $DPoutput = $fullname . "(" . $DP . ")";
+            }
         }
+
+
+
     }
 
-$mm = date("m", strtotime($_POST["DoB"]));
-$dd = date("d", strtotime($_POST["DoB"]));
+
 function fruitiac($mm, $dd) {
 //allocate friut depending on the date of birth
 
@@ -158,6 +180,7 @@ function fruitiac($mm, $dd) {
     return $fruitiac;
 
 }
+
 function prog($DP) {
 //use PHP switch statement
     $progTitle = "";
@@ -179,11 +202,22 @@ function prog($DP) {
             break;
         case "DS":
             $progTitle = "Data Science";
-            }
+            break;
+        case "FST":
+            $progTitle = "Food Science and Technology";
+            break;
+        case "ENVS":
+            $progTitle = "Environmental Science";
+            break;
+        default:
+            $progTitle = 0;
+    }
+
 
     return $progTitle;
 }
 
+/* Function for outputting the table */
 function outputTable($data){
     $data = trim($data);
     $data = stripslashes($data);
@@ -192,35 +226,43 @@ function outputTable($data){
 }
 ?>
 
+<!-- Start of the form -->
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> ">
+
+    <!-- Name -->
     Name: <input type="text" name="name" value="<?php echo $name;?>">
 
     <br/>
     <br/>
 
-    Date of Birth: <input type="date" name="DoB" value="<?php echo date("d m Y", strtotime($_POST["DoB"]))?>">
+    <!-- DoB -->
+    Date of Birth: <input type="date" name="DoB" value="<?php echo date("d m Y", strtotime($DoB))?>">
 
     <br/>
     <br/>
 
+    <!-- UICID -->
     UIC ID: <input type="text" name="UID" value="<?php echo $UID?>">
 
     <br/>
     <br/>
 
+    <!-- DSTP -->
     DST Programme: <input type="text" name="DP" value="<?php echo $DP?>">
 
     <br/>
     <br/>
 
+    <!-- Gender -->
     Gender:
-    <input type="radio" name="gender" <?php if(isset($gender) && $gender=="female") echo "checked";?> value="female">Female
-    <input type="radio" name="gender" <?php if(isset($gender) && $gender=="male") echo "checked";?> value="female">Male
-    <input type="radio" name="gender" <?php if(isset($gender) && $gender=="other") echo "checked";?> value="female">Other
+    <input type="radio" name="gender" <?php if(isset($gender) && $gender=="female") echo "checked";?> value="Female">Female
+    <input type="radio" name="gender" <?php if(isset($gender) && $gender=="male") echo "checked";?> value="Male">Male
+    <input type="radio" name="gender" <?php if(isset($gender) && $gender=="other") echo "checked";?> value="Other">Other
 
     <br/>
     <br/>
 
+    <!-- Favourite things -->
     Favourite things:<br/>
 
         <input type="checkbox" name="fav[]" value="Watching Movies">Watching Movies<br/>
@@ -234,6 +276,7 @@ function outputTable($data){
 
     <br/>
 
+    <!-- Submit button -->
     <input type="submit" name="submit" value="submit">
 
     <br/>
@@ -247,6 +290,8 @@ function outputTable($data){
     <span class="error"><?php echo $FTErr;?></span><br/>
 </form>
 
+
+<!-- Start of the table -->
 <?php
 
 echo "<table border=1><tr><th>Name</th><td>" . $name . "</td></tr>";
@@ -266,8 +311,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 "</td></tr></table>";
-
-echo $fruitiac;
 
 ?>
 
