@@ -38,7 +38,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $uninp = $_POST["un"];
     $pwinp = $_POST["pw"];
-    $sql = "SELECT firstname, familyname, age, creditscore FROM usertable WHERE username = '$uninp' AND password = '$pwinp'";
+	
+    $sql = "SELECT firstname, familyname, age, creditscore FROM usertable WHERE username = '$uninp' OR  id_number = '$uninp' AND password = '$pwinp'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 
