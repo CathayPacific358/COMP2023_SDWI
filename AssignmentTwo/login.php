@@ -21,6 +21,7 @@
 <?php
 $unErr = $pwErr = "";
 $un = $pw = $uninp = "";
+$tableoupt = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -29,6 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = "m730026119";
     $password = "abc123xyz";
     $dbname = "m730026119";
+
 // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -38,11 +40,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $uninp = $_POST["un"];
     $pwinp = $_POST["pw"];
-	
+
+    //Check if the account is existing
     $sql = "SELECT firstname, familyname, age, creditscore FROM usertable WHERE username = '$uninp' OR  id_number = '$uninp' AND password = '$pwinp'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 
+    //If existing, print the table
     if ($result->num_rows > 0) {
         // output data of each row
         $tableoupt = 
@@ -60,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			    <td>" . $row["creditscore"] . "</td>
             </tr></table>";
     }
-    else {
+    else {//If not existing, show warning
         $unErr = "User not found or password incorrect <br/><a href='./registration.php'>Register?</a> or <a href='#'>Forgot Password?</a>";
     }
     $conn->close();

@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Connect SQL for existence check
     $servername = "localhost";
-    $username = "m730026119";
+    $username = "root";
     $password = "abc123xyz";
     $dbname = "m730026119";
 
@@ -152,6 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+//Function for age calculation
 function countAge()
 {
 
@@ -272,6 +273,7 @@ function insertNewMember()
     $totalCredit = $creditscore + $loanCredit;
     $age = countAge();
 
+    //Insert data
         $sql = "INSERT INTO `usertable` 
         (`cutomernumber`, `username`, `password`, `id_number`, `firstname`, `familyname`, `age`, `gender`, `houseloan`, `mastercard`, `visacard`, `storecard`, `otherloan`, `creditscore`)
         VALUES (NULL, '$usern', '$pw', '$id_number', '$firstname', '$familyname', '$age', '$gender', '$houseloan', '$mastercard', '$visacard', '$storecard', '$otherloan', '$totalCredit');";
