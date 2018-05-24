@@ -10,6 +10,10 @@
         .error {
             color: red;
         }
+		
+		.success {
+			color: green;
+		}
     </style>
 </head>
 
@@ -17,20 +21,20 @@
 
 <?php
 $run = $rpw = $rcpw = $familyn = $firstn = $idcn = $prov = $provsel = $loan = $gender = "";
-$runErr = $rpwErr = $rcpwErr = $familynErr = $firstnErr = $idcnErr = $genderErr = $provinceErr = $loansErr = "";
+$runErr = $rpwErr = $rcpwErr = $familynErr = $firstnErr = $idcnErr = $genderErr = $provinceErr = $loansErr = $regSuccess = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $run = $rpw = $rcpw = $familyn = $firstn = $idcn = $prov = $loan = $gender = "";
-    $runErr = $rpwErr = $rcpwErr = $familynErr = $firstnErr = $idcnErr = $genderErr = $provinceErr = $loansErr = "";
+    $runErr = $rpwErr = $rcpwErr = $familynErr = $firstnErr = $idcnErr = $genderErr = $provinceErr = $loansErr = $regSuccess = "";
     $ageCredit = $genderCredit = $provCredit = $loanCredit = "";
     $errCheck = 0;
 
     //Connect SQL for existence check
     $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "customerdata";
+    $username = "m730026119";
+    $password = "abc123xyz";
+    $dbname = "m730026119";
 
 // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -143,6 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if($errCheck == 0){
+		$regSuccess = "Registered Successfully!";
         insertNewMember();
     }
 }
@@ -213,9 +218,9 @@ function insertNewMember()
 {
     //Connect SQL for existence check
     $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "customerdata";
+    $username = "m730026119";
+    $password = "abc123xyz";
+    $dbname = "m730026119";
 
 
     //Calculate the credit of loan method
@@ -331,6 +336,7 @@ function insertNewMember()
         <input type="checkbox" name="loan[]" value="5">Other Loan<br/><br/>
 
         <input type="submit" value="Register"/><br/>
+		<span class="success"><?php echo $regSuccess?></span><br/>
 
         <a href="./login.php">Already have an account?</a>
     </form>

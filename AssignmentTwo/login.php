@@ -26,9 +26,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "customerdata";
+    $username = "m730026119";
+    $password = "abc123xyz";
+    $dbname = "m730026119";
 // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -38,16 +38,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $uninp = $_POST["un"];
     $pwinp = $_POST["pw"];
-    $sql = "SELECT username, age, creditscore FROM usertable WHERE username = '$uninp' AND password = '$pwinp'";
+    $sql = "SELECT firstname, familyname, age, creditscore FROM usertable WHERE username = '$uninp' AND password = '$pwinp'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 
     if ($result->num_rows > 0) {
         // output data of each row
-        echo "<table border=1>
+        $tableoupt = 
+			"<table border=1>
 			<tr>
 				<th>Name</th>
-				<td>" . $row["username"] . "</td>
+				<td>" . $row["firstname"] . " " . $row["familyname"] . "</td>
 			</tr>
 			<tr>
 				<th>Age</th>
@@ -56,8 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			<tr>
 			    <th>Credit Score</th>
 			    <td>" . $row["creditscore"] . "</td>
-            </tr>";
-        echo "</table>";
+            </tr></table>";
     }
     else {
         $unErr = "User not found or password incorrect <br/><a href='./registration.php'>Register?</a> or <a href='#'>Forgot Password?</a>";
@@ -81,6 +81,7 @@ Password:<br/>
 <input type="submit" value="Login" name="login"/><br/><br/>
 
 <a href="./registration.php">Do not have an account?</a>
+<span><?php echo $tableoupt?></span>
 </form>
 </div>
 </body>
