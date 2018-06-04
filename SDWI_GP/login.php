@@ -19,7 +19,7 @@
             <img src="./img/GPLOGO_NW.png" width="28px" onmouseover="this.src='./img/GPLOGO_NWH.png'" onmouseout="this.src='./img/GPLOGO_NW.png'"/>
         </a>
         <a class="py-2 d-none d-md-inline-block" href="#">About us</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Product</a>
+        <a class="py-2 d-none d-md-inline-block" href="./index.html">Product</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign in</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -32,7 +32,7 @@
 </nav>
 
 <!--- SIGN IN FORM --->
-<div class="loginAndRegForm">
+<div class="contentbg">
     <form class="form-signin">
         <img class="mb-4" src="" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-bold f-handstyle">Sign in</h1>
@@ -83,9 +83,9 @@
             </ul>
         </div>
         <div class="col-6 col-md">
-            <h5>About</h5>
+            <h5>Contact us</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Team</a></li>
+                <li><a class="text-muted" href="./contacts.php">Co-founders</a></li>
                 <li><a class="text-muted" href="#">Locations</a></li>
                 <li><a class="text-muted" href="#">Privacy</a></li>
                 <li><a class="text-muted" href="#">Terms</a></li>

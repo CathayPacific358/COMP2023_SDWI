@@ -9,6 +9,8 @@
 
     <!-- Custom styles for this template -->
     <link href="./totalStyle.css" rel="stylesheet">
+    <link href="./bootstrap-4.0.0/dist/css/gallery.css" rel="stylesheet">
+    <link href="./bootstrap-4.0.0/dist/css/baguetteBox.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -31,21 +33,30 @@
     </div>
 </nav>
 
-<!--- SIGN IN FORM --->
 <div class="contentbg">
-    <form class="form-signin">
-        <img class="mb-4" src="" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-bold f-handstyle">Sign up</h1>
-        <input type="text" class="form-control" placeholder="Username" required autofocus><br/>
-        <input type="password" class="form-control" placeholder="Password" required><br/>
-        <input type="password" class="form-control" placeholder="Confirm password" required><br/>
-        <input type="text" class="form-control" placeholder="Tel Number" required><br/>
-        <input type="text" class="form-control" placeholder="Email" required><br/>
-        <input type="text" class="form-control" placeholder="City (In upper case)" required><br/>
-        <input type="text" class="form-control" placeholder="Address" required><br/>
-        <br/>
-        <button class="btn btn-lg btn-outline-info btn-block f-handstyle" type="submit"><b>Sign up</b></button>
-    </form>
+<div class="container gallery-container f-handstyle">
+    <h2>CO-FOUNDERS</h2>
+    <div class="tz-gallery">
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="thumbnail"> <a class="lightbox" href="./img/ljj.jpg"> <img src="./img/ljj.jpg" class="contactimg"></a>
+                    <div class="f-contacts">
+                        <h3>Sputnik Lee</h3>
+                        <p class="f-compstyle">Indescribable</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="thumbnail"> <a class="lightbox" href="./img/wsy.png"> <img src="./img/wsy.png" class="contactimg"> </a>
+                    <div class="f-contacts">
+                        <h3>Frank Ng</h3>
+                        <p class="f-compstyle">Indescribable</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 <!--- FOOTER --->
@@ -107,12 +118,14 @@
 <script src="./bootstrap-4.0.0/assets/js/vendor/popper.min.js"></script>
 <script src="./bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
 <script src="./bootstrap-4.0.0/assets/js/vendor/holder.min.js"></script>
+<script src="./bootstrap-4.0.0/dist/js/baguetteBox.min.js"></script>
 <script>
     Holder.addTheme('thumb', {
         bg: '#55595c',
         fg: '#eceeef',
         text: 'Thumbnail'
     });
+    baguetteBox.run('.tz-gallery');
 </script>
 </body>
 </html>

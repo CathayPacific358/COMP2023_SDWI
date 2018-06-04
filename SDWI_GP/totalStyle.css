@@ -5,6 +5,18 @@
     font-weight: bold;
 }
 
+.f-handstyle h2{
+    font-family: "Bradley Hand ITC";
+    text-align: center;
+    font-weight: bold;
+    color: black;
+}
+
+.f-compstyle{
+    font-family: "Calibri Light";
+    font-size: 20px;
+}
+
 .container {
     max-width: 960px;
 }
@@ -107,7 +119,7 @@
 }
 
 /* LOGIN FORM */
-.loginAndRegForm {
+.contentbg {
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
@@ -120,4 +132,32 @@
     padding-top: 40px;
     padding-bottom: 40px;
     background-color: rgb(220, 239, 247);
+}
+
+.contactimg{
+    max-width: 100%;
+}
+
+.indeximg{
+    width: 150%;
+}
+.f-maintitle{
+    font-size: 60px;
+}
+.f-contacts h3{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.f-contacts{
+    padding: 26px 30px;
+    text-align: center;
+}
+
+.f-contacts p{
+    font-size: 16px;
+    text-align: center;
+    font-weight: normal;
+    margin-top: 0;
 }
