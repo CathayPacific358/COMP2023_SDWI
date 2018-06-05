@@ -6,10 +6,35 @@
 
     <!-- Bootstrap core CSS -->
     <link href="./bootstrap-4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="./totalStyle.css" rel="stylesheet">
+    <?php
+    $servername = "localhost";
+    $dbusername = "root";
+    $password = "";
+    $dbname = "planecup";
+    $mes = $password = $username = "";
 
+    $conn = new mysqli($servername, $dbusername, $password, $dbname);
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $err = 0;
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            header("Location:index.php?user=$username");
+            die;
+        }
+        else{
+            $mes ="<div id='myAlert' class='alert alert-warning'><a href='#' class='close' width='auto' data-dismiss='alert'>&times;</a><p>Incorrect username or password.</p></div> ";
+        }
+    }
+
+    $conn->close();
+
+    ?>
 </head>
 <body>
 
@@ -33,12 +58,12 @@
 
 <!--- SIGN IN FORM --->
 <div class="contentbg">
-    <form class="form-signin">
+    <form class="form-signin" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="Post">
         <img class="mb-4" src="" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-bold f-handstyle">Sign in</h1>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+        <h1 class="h3 mb-3 font-weight-bold f-handstyle">Sign in</h1><?php echo $mes;?>
+        <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" value="<?php echo $username;?>" required autofocus>
         <br/>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" value="<?php echo $password;?>" required>
         <br/>
         <button class="btn btn-lg btn-outline-info btn-block f-handstyle" type="submit">Sign in</button>
     </form>

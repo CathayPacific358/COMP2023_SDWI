@@ -9,7 +9,23 @@
 
     <!-- Custom styles for this template -->
     <link href="./totalStyle.css" rel="stylesheet">
-
+    <?php
+        if(empty($_GET['user'])){
+            $head="<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
+        <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
+            <a class=\"dropdown-item\" href=\"#\">Sign in as Admin</a>
+            <a class=\"dropdown-item\" href=\"./registration.php\">Sign in as Customer</a>
+            <a class=\"dropdown-item\" href=\"#\">Sign in as VIP</a>
+        </div>
+        <a class=\"py-2 d-none d-md-inline-block\" href=\"./login.php\">Sign up</a>
+        ";
+        }
+        else{
+            $head ="<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, ".$_GET['user']."</a>
+            <a class=\"py-2 d-none d-md-inline-block\" href=\"index.php\">Sign out</a>
+            ";
+        }
+    ?>
 </head>
 <body>
 
@@ -21,13 +37,9 @@
         <a class="py-2 d-none d-md-inline-block" href="#">About us</a>
         <a class="py-2 d-none d-md-inline-block" href="./index.html">Product</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign in</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Sign in as Admin</a>
-            <a class="dropdown-item" href="./registration.php">Sign in as Customer</a>
-            <a class="dropdown-item" href="#">Sign in as VIP</a>
-        </div>
-        <a class="py-2 d-none d-md-inline-block" href="./login.php">Sign up</a>
+        <?php echo $head;?>
+
+
     </div>
 </nav>
 
