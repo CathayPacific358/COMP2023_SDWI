@@ -37,10 +37,10 @@
             $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
             <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
                 <a class=\"dropdown-item\" href=\"#\">Sign in as Admin</a>
-                <a class=\"dropdown-item\" href=\"./registration.php\">Sign in as Customer</a>
+                <a class=\"dropdown-item\" href=\"./login.php\">Sign in as Customer</a>
                 <a class=\"dropdown-item\" href=\"#\">Sign in as VIP</a>
             </div>
-            <a class=\"py-2 d-none d-md-inline-block\" href=\"./login.php\">Sign up</a>
+            <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
             ";
             $index = "index.php";
             $contacts = "contacts.php";
@@ -50,10 +50,10 @@
         $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
         <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
             <a class=\"dropdown-item\" href=\"#\">Sign in as Admin</a>
-            <a class=\"dropdown-item\" href=\"./registration.php\">Sign in as Customer</a>
+            <a class=\"dropdown-item\" href=\"./login.php\">Sign in as Customer</a>
             <a class=\"dropdown-item\" href=\"#\">Sign in as VIP</a>
         </div>
-        <a class=\"py-2 d-none d-md-inline-block\" href=\"./login.php\">Sign up</a>
+        <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
         ";
         $index = "index.php";
         $contacts = "contacts.php";
@@ -86,8 +86,12 @@
 <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
     <div class="bg-dark mr-md-3 pt-3 pt-md-5 text-center text-white overflow-hidden">
         <div class="my-3 py-3">
-            <h2 class="display-5">Another headline</h2>
+            <h2 class="display-5">- mini-FERRERO -</h2>
             <p class="lead">And an even wittier subheading.</p>
+            <br/>
+            <button class="btn btn-outline-light">Small (x1)</button>
+            <button class="btn btn-outline-light">Medium (x2)</button>
+            <button class="btn btn-outline-light">Large (x3)</button>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake1.jpg" class="indeximg"/>
@@ -96,11 +100,29 @@
 
     <div class="bg-light mr-md-3 pt-3 pt-md-5 text-center overflow-hidden">
         <div class="my-3 p-3">
-            <h2 class="display-5">Lavender</h2>
+            <h2 class="display-5">- Lavender Queen -</h2>
             <p class="lead">And an even wittier subheading.</p>
+            <br/>
+            <button class="btn btn-outline-dark">Small (x1)</button>
+            <button class="btn btn-outline-dark">Medium (x2)</button>
+            <button class="btn btn-outline-dark">Large (x3)</button>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake2.jpg" class="indeximg"/>
+        </div>
+    </div>
+
+    <div class="bg-dark mr-md-3 pt-3 pt-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 p-3">
+            <h2 class="display-5">- La Framboise -</h2>
+            <p class="lead">And an even wittier subheading.</p>
+            <br/>
+            <button class="btn btn-outline-light">Small (x1)</button>
+            <button class="btn btn-outline-light">Medium (x2)</button>
+            <button class="btn btn-outline-light">Large (x3)</button>
+        </div>
+        <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
+            <img src="./img/cake3.jpg" class="indeximg"/>
         </div>
     </div>
 </div>
@@ -109,52 +131,69 @@
 <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
     <div class="bg-light mr-md-3 pt-3 pt-md-5 text-center overflow-hidden">
         <div class="my-3 p-3">
-            <h2 class="display-5">Another headline</h2>
+            <h2 class="display-5">- Sombrero de bruja -</h2>
             <p class="lead">And an even wittier subheading.</p>
+            <br/>
+            <button class="btn btn-outline-dark">Small (x1)</button>
+            <button class="btn btn-outline-dark">Medium (x2)</button>
+            <button class="btn btn-outline-dark">Large (x3)</button>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
-            <img src="./img/cake3.jpg" class="indeximg"/>
+            <img src="./img/cake9.jpg" class="indeximg"/>
         </div>
     </div>
     <div class="bg-dark mr-md-3 pt-3 pt-md-5 text-center text-white overflow-hidden">
         <div class="my-3 py-3">
-            <h2 class="display-5">Another headline</h2>
+            <h2 class="display-5">- 北海道の深い冬。 -</h2>
             <p class="lead">And an even wittier subheading.</p>
+            <br/>
+            <button class="btn btn-outline-light">Small (x1)</button>
+            <button class="btn btn-outline-light">Medium (x2)</button>
+            <button class="btn btn-outline-light">Large (x3)</button>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
-            <img src="./img/cake4.jpg" class="indeximg"/>
+            <img src="./img/cake6.jpg" class="indeximg"/>
+        </div>
+    </div>
+    <div class="bg-light mr-md-3 pt-3 pt-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+            <h2 class="display-5">- Dreaming Cream -</h2>
+            <p class="lead">And an even wittier subheading.</p>
+            <br/>
+            <button class="btn btn-outline-dark">Small (x1)</button>
+            <button class="btn btn-outline-dark">Medium (x2)</button>
+            <button class="btn btn-outline-dark">Large (x3)</button>
+        </div>
+        <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
+            <img src="./img/cake5.jpg" class="indeximg"/>
         </div>
     </div>
 </div>
 
 <!-- ROW THREE -->
 <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-    <div class="bg-dark mr-md-3 pt-3 pt-md-5 text-center text-white overflow-hidden">
-        <div class="my-3 p-3">
-            <h2 class="display-5">Another headline</h2>
-            <p class="lead">And an even wittier subheading.</p>
-        </div>
-        <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
-            <img src="./img/cake5.jpg" class="indeximg"/>
-        </div>
-    </div>
-    <div class="bg-light mr-md-3 pt-3 pt-md-5 text-center overflow-hidden">
-        <div class="my-3 py-3">
-            <h2 class="display-5">Another headline</h2>
-            <p class="lead">And an even wittier subheading.</p>
-        </div>
-        <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
-            <img src="./img/cake6.jpg" class="indeximg"/>
-        </div>
-    </div>
-</div>
 
-<!-- ROW FOUR -->
-<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+    <div class="bg-dark mr-md-3 pt-3 pt-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 py-3">
+            <h2 class="display-5">- Soul of Chocolate -</h2>
+            <p class="lead">And an even wittier subheading.</p>
+            <br/>
+            <button class="btn btn-outline-light">Small (x1)</button>
+            <button class="btn btn-outline-light">Medium (x2)</button>
+            <button class="btn btn-outline-light">Large (x3)</button>
+        </div>
+        <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
+            <img src="./img/cake4.jpg" class="indeximg"/>
+        </div>
+    </div>
     <div class="bg-light mr-md-3 pt-3 pt-md-5 text-center overflow-hidden">
         <div class="my-3 p-3">
-            <h2 class="display-5">Another headline</h2>
+            <h2 class="display-5">- 雪のお姫様 -</h2>
             <p class="lead">And an even wittier subheading.</p>
+            <br/>
+            <button class="btn btn-outline-dark">Small (x1)</button>
+            <button class="btn btn-outline-dark">Medium (x2)</button>
+            <button class="btn btn-outline-dark">Large (x3)</button>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake7.jpg" class="indeximg"/>
@@ -162,8 +201,12 @@
     </div>
     <div class="bg-dark mr-md-3 pt-3 pt-md-5 text-center text-white overflow-hidden">
         <div class="my-3 py-3">
-            <h2 class="display-5">Another headline</h2>
+            <h2 class="display-5">- Merry Christmas! -</h2>
             <p class="lead">And an even wittier subheading.</p>
+            <br/>
+            <button class="btn btn-outline-light">Small (x1)</button>
+            <button class="btn btn-outline-light">Medium (x2)</button>
+            <button class="btn btn-outline-light">Large (x3)</button>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake8.jpg" class="indeximg"/>

@@ -39,10 +39,10 @@
             $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
             <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
                 <a class=\"dropdown-item\" href=\"#\">Sign in as Admin</a>
-                <a class=\"dropdown-item\" href=\"./registration.php\">Sign in as Customer</a>
+                <a class=\"dropdown-item\" href=\"./login.php\">Sign in as Customer</a>
                 <a class=\"dropdown-item\" href=\"#\">Sign in as VIP</a>
             </div>
-            <a class=\"py-2 d-none d-md-inline-block\" href=\"./login.php\">Sign up</a>
+            <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
             ";
             $index = "index.php";
             $contacts = "contacts.php";
@@ -52,10 +52,10 @@
         $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
         <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
             <a class=\"dropdown-item\" href=\"#\">Sign in as Admin</a>
-            <a class=\"dropdown-item\" href=\"./registration.php\">Sign in as Customer</a>
+            <a class=\"dropdown-item\" href=\"./login.php\">Sign in as Customer</a>
             <a class=\"dropdown-item\" href=\"#\">Sign in as VIP</a>
         </div>
-        <a class=\"py-2 d-none d-md-inline-block\" href=\"./login.php\">Sign up</a>
+        <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
         ";
         $index = "index.php";
         $contacts = "contacts.php";
