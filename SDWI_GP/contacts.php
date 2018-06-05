@@ -34,6 +34,7 @@
             $password = $_GET['psw'];
             $index = "index.php?user=" . $username . "&psw=" . $password;
             $contacts = "contacts.php?user=" . $username . "&psw=" . $password;
+            $homepage = "homepage.php?user=" . $username . "&psw=" . $password;
         }
         else {
             $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
@@ -46,6 +47,7 @@
             ";
             $index = "index.php";
             $contacts = "contacts.php";
+            $homepage = "homepage.php";
         }
     }
     else {
@@ -59,6 +61,7 @@
         ";
         $index = "index.php";
         $contacts = "contacts.php";
+        $homepage = "homepage.php";
     }
     ?>
 
@@ -67,11 +70,11 @@
 
 <nav class="sticky-top py-1 site-header f-handstyle">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2" href="#">
+        <a class="py-2" href="<?php echo $homepage;?>">
             <img src="./img/GPLOGO_NW.png" width="28px" onmouseover="this.src='./img/GPLOGO_NWH.png'"
                  onmouseout="this.src='./img/GPLOGO_NW.png'"/>
         </a>
-        <a class="py-2 d-none d-md-inline-block" href="#">About us</a>
+        <a class="py-2 d-none d-md-inline-block" href="<?php echo $homepage;?>">About us</a>
         <a class="py-2 d-none d-md-inline-block" href="<?php echo $index;?>">Product</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
         <?php echo $head; ?>

@@ -41,10 +41,10 @@
 
 <nav class="sticky-top py-1 site-header f-handstyle">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2" href="#">
+        <a class="py-2" href="<?php echo $homepage;?>">
             <img src="./img/GPLOGO_NW.png" width="28px" onmouseover="this.src='./img/GPLOGO_NWH.png'" onmouseout="this.src='./img/GPLOGO_NW.png'"/>
         </a>
-        <a class="py-2 d-none d-md-inline-block" href="#">About us</a>
+        <a class="py-2 d-none d-md-inline-block" href="./homepage.php">About us</a>
         <a class="py-2 d-none d-md-inline-block" href="./index.php">Product</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign in</a>
@@ -62,7 +62,7 @@
     <form class="form-signin" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="Post">
         <img class="mb-4" src="" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-bold f-handstyle">Sign in</h1><?php echo $mes;?>
-        <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" value="<?php echo $username;?>" required autofocus>
+        <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" style="width: 300px;" value="<?php echo $username;?>" required autofocus>
         <br/>
         <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" value="<?php echo $password;?>" required>
         <br/>

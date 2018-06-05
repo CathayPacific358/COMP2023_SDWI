@@ -33,7 +33,8 @@
             $index = "index.php?user=" . $username . "&psw=" . $password;
             $contacts = "contacts.php?user=" . $username . "&psw=" . $password;
             $homepage = "homepage.php?user=" . $username . "&psw=" . $password;
-        } else {
+        }
+        else {
             $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
             <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
                 <a class=\"dropdown-item\" href=\"#\">Sign in as Admin</a>
@@ -46,7 +47,8 @@
             $contacts = "contacts.php";
             $homepage = "homepage.php";
         }
-    } else {
+    }
+    else {
         $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
         <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
             <a class=\"dropdown-item\" href=\"#\">Sign in as Admin</a>
@@ -69,8 +71,8 @@
             <img src="./img/GPLOGO_NW.png" width="28px" onmouseover="this.src='./img/GPLOGO_NWH.png'"
                  onmouseout="this.src='./img/GPLOGO_NW.png'"/>
         </a>
-        <a class="py-2 d-none d-md-inline-block" href="<?php echo $homepage; ?>">About us</a>
-        <a class="py-2 d-none d-md-inline-block" href="<?php echo $index; ?>">Product</a>
+        <a class="py-2 d-none d-md-inline-block" href="<?php echo $homepage;?>">About us</a>
+        <a class="py-2 d-none d-md-inline-block" href="<?php echo $index;?>">Product</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
         <?php echo $head; ?>
 
@@ -83,136 +85,20 @@
     <div class="box-shadow d-none d-md-block"></div>
 </div>
 
-<!-- ROW ONE -->
-<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-    <div class="bg-dark mr-md-3 pt-3 pt-md-5 text-center text-white overflow-hidden">
-        <div class="my-3 py-3">
-            <h2 class="display-5">- mini-FERRERO -</h2>
-            <p class="lead">And an even wittier subheading.</p>
-            <br/>
-            <button class="btn btn-outline-light">Small (x1)</button>
-            <button class="btn btn-outline-light">Medium (x2)</button>
-            <button class="btn btn-outline-light">Large (x3)</button>
-        </div>
-        <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
-            <img src="./img/cake1.jpg" class="indeximg"/>
-        </div>
-    </div>
-
-    <div class="bg-light mr-md-3 pt-3 pt-md-5 text-center overflow-hidden">
-        <div class="my-3 p-3">
-            <h2 class="display-5">- Lavender Queen -</h2>
-            <p class="lead">And an even wittier subheading.</p>
-            <br/>
-            <button class="btn btn-outline-dark">Small (x1)</button>
-            <button class="btn btn-outline-dark">Medium (x2)</button>
-            <button class="btn btn-outline-dark">Large (x3)</button>
-        </div>
-        <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
-            <img src="./img/cake2.jpg" class="indeximg"/>
-        </div>
-    </div>
-
-    <div class="bg-dark mr-md-3 pt-3 pt-md-5 text-center text-white overflow-hidden">
-        <div class="my-3 p-3">
-            <h2 class="display-5">- La Framboise -</h2>
-            <p class="lead">And an even wittier subheading.</p>
-            <br/>
-            <button class="btn btn-outline-light">Small (x1)</button>
-            <button class="btn btn-outline-light">Medium (x2)</button>
-            <button class="btn btn-outline-light">Large (x3)</button>
-        </div>
-        <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
-            <img src="./img/cake3.jpg" class="indeximg"/>
-        </div>
+<!-- Greeting & Intro -->
+<div class="contentbg">
+<div class="container">
+    <div class="f-compstyle">
+        <p class="pt-md-5 f-handstyle" style="font-size: 50px;">Hello,</p>
+        <p class="pt-md-5" style="font-size: 24px;">We are a cake brand that particularly provide cup cakes for the portable food industry.
+                                                    And we initially aim at the market of aviation food industry.</p>
+        <p class="pt-md-5" style="font-size: 24px;">Our retail shop will open in Guangzhou Baiyun International Airport, and serve the
+                                                    customers who want to have cakes there. Meanwhile, express service is provided, for
+                                                    someone who want to try our products but do not willing to go to the airport. Moreover,
+                                                     we are also planning to cooperate with airlines, in order to become a on-board desserts
+                                                    supplier.</p>
     </div>
 </div>
-
-<!-- ROW TWO -->
-<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-    <div class="bg-light mr-md-3 pt-3 pt-md-5 text-center overflow-hidden">
-        <div class="my-3 p-3">
-            <h2 class="display-5">- Sombrero de bruja -</h2>
-            <p class="lead">And an even wittier subheading.</p>
-            <br/>
-            <button class="btn btn-outline-dark">Small (x1)</button>
-            <button class="btn btn-outline-dark">Medium (x2)</button>
-            <button class="btn btn-outline-dark">Large (x3)</button>
-        </div>
-        <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
-            <img src="./img/cake9.jpg" class="indeximg"/>
-        </div>
-    </div>
-    <div class="bg-dark mr-md-3 pt-3 pt-md-5 text-center text-white overflow-hidden">
-        <div class="my-3 py-3">
-            <h2 class="display-5">- 北海道の深い冬。 -</h2>
-            <p class="lead">And an even wittier subheading.</p>
-            <br/>
-            <button class="btn btn-outline-light">Small (x1)</button>
-            <button class="btn btn-outline-light">Medium (x2)</button>
-            <button class="btn btn-outline-light">Large (x3)</button>
-        </div>
-        <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
-            <img src="./img/cake6.jpg" class="indeximg"/>
-        </div>
-    </div>
-    <div class="bg-light mr-md-3 pt-3 pt-md-5 text-center overflow-hidden">
-        <div class="my-3 p-3">
-            <h2 class="display-5">- Dreaming Cream -</h2>
-            <p class="lead">And an even wittier subheading.</p>
-            <br/>
-            <button class="btn btn-outline-dark">Small (x1)</button>
-            <button class="btn btn-outline-dark">Medium (x2)</button>
-            <button class="btn btn-outline-dark">Large (x3)</button>
-        </div>
-        <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
-            <img src="./img/cake5.jpg" class="indeximg"/>
-        </div>
-    </div>
-</div>
-
-<!-- ROW THREE -->
-<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-
-    <div class="bg-dark mr-md-3 pt-3 pt-md-5 text-center text-white overflow-hidden">
-        <div class="my-3 py-3">
-            <h2 class="display-5">- Soul of Chocolate -</h2>
-            <p class="lead">And an even wittier subheading.</p>
-            <br/>
-            <button class="btn btn-outline-light">Small (x1)</button>
-            <button class="btn btn-outline-light">Medium (x2)</button>
-            <button class="btn btn-outline-light">Large (x3)</button>
-        </div>
-        <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
-            <img src="./img/cake4.jpg" class="indeximg"/>
-        </div>
-    </div>
-    <div class="bg-light mr-md-3 pt-3 pt-md-5 text-center overflow-hidden">
-        <div class="my-3 p-3">
-            <h2 class="display-5">- 雪のお姫様 -</h2>
-            <p class="lead">And an even wittier subheading.</p>
-            <br/>
-            <button class="btn btn-outline-dark">Small (x1)</button>
-            <button class="btn btn-outline-dark">Medium (x2)</button>
-            <button class="btn btn-outline-dark">Large (x3)</button>
-        </div>
-        <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
-            <img src="./img/cake7.jpg" class="indeximg"/>
-        </div>
-    </div>
-    <div class="bg-dark mr-md-3 pt-3 pt-md-5 text-center text-white overflow-hidden">
-        <div class="my-3 py-3">
-            <h2 class="display-5">- Merry Christmas! -</h2>
-            <p class="lead">And an even wittier subheading.</p>
-            <br/>
-            <button class="btn btn-outline-light">Small (x1)</button>
-            <button class="btn btn-outline-light">Medium (x2)</button>
-            <button class="btn btn-outline-light">Large (x3)</button>
-        </div>
-        <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
-            <img src="./img/cake8.jpg" class="indeximg"/>
-        </div>
-    </div>
 </div>
 
 <!--- FOOTER --->
@@ -258,7 +144,7 @@
         <div class="col-6 col-md">
             <h5>Contact us</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="<?php echo $contacts; ?>">Co-founders</a></li>
+                <li><a class="text-muted" href="<?php echo $contacts;?>">Co-founders</a></li>
                 <li><a class="text-muted" href="#">Locations</a></li>
                 <li><a class="text-muted" href="#">Privacy</a></li>
                 <li><a class="text-muted" href="#">Terms</a></li>
@@ -266,7 +152,6 @@
         </div>
     </div>
 </footer>
-
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

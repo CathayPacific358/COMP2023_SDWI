@@ -15,10 +15,10 @@
 
 <nav class="sticky-top py-1 site-header f-handstyle">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2" href="#">
+        <a class="py-2" href="<?php echo $homepage;?>">
             <img src="./img/GPLOGO_NW.png" width="28px" onmouseover="this.src='./img/GPLOGO_NWH.png'" onmouseout="this.src='./img/GPLOGO_NW.png'"/>
         </a>
-        <a class="py-2 d-none d-md-inline-block" href="#">About us</a>
+        <a class="py-2 d-none d-md-inline-block" href="./homepage.php">About us</a>
         <a class="py-2 d-none d-md-inline-block" href="./index.php">Product</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign in</a>
