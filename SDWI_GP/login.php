@@ -11,11 +11,11 @@
     <?php
     $servername = "localhost";
     $dbusername = "root";
-    $password = "";
+    $dbpassword = "";
     $dbname = "planecup";
     $mes = $password = $username = "";
 
-    $conn = new mysqli($servername, $dbusername, $password, $dbname);
+    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $err = 0;
@@ -24,7 +24,8 @@
         $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
-            header("Location:index.php?user=$username");
+            $password=hash("md5",$password);
+            header("Location:index.php?user=$username&psw=$password");
             die;
         }
         else{

@@ -10,8 +10,28 @@
     <!-- Custom styles for this template -->
     <link href="./totalStyle.css" rel="stylesheet">
     <?php
-        if(empty($_GET['user'])){
-            $head="<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
+
+    $servername = "localhost";
+    $dbusername = "root";
+    $dbpassword = "";
+    $dbname = "planecup";
+    $mes = $password = $username = "";
+
+    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+
+    if (!empty($_GET['user']) && !empty($_GET['psw'])) {
+        $username = $_GET['user'];
+        $sql = "SELECT password FROM user WHERE username = '$username'";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+        $password = $row['password'];
+        if (hash("md5",$password)==$_GET['psw']) {
+            $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $_GET['user'] . "</a>
+            <a class=\"py-2 d-none d-md-inline-block\" href=\"index.php\">Sign out</a>
+            ";
+        }
+        else {
+            $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
         <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
             <a class=\"dropdown-item\" href=\"#\">Sign in as Admin</a>
             <a class=\"dropdown-item\" href=\"./registration.php\">Sign in as Customer</a>
@@ -20,11 +40,17 @@
         <a class=\"py-2 d-none d-md-inline-block\" href=\"./login.php\">Sign up</a>
         ";
         }
-        else{
-            $head ="<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, ".$_GET['user']."</a>
-            <a class=\"py-2 d-none d-md-inline-block\" href=\"index.php\">Sign out</a>
-            ";
-        }
+    }
+    else {
+        $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
+        <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
+            <a class=\"dropdown-item\" href=\"#\">Sign in as Admin</a>
+            <a class=\"dropdown-item\" href=\"./registration.php\">Sign in as Customer</a>
+            <a class=\"dropdown-item\" href=\"#\">Sign in as VIP</a>
+        </div>
+        <a class=\"py-2 d-none d-md-inline-block\" href=\"./login.php\">Sign up</a>
+        ";
+    }
     ?>
 </head>
 <body>
@@ -32,12 +58,13 @@
 <nav class="sticky-top py-1 site-header f-handstyle">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
         <a class="py-2" href="#">
-            <img src="./img/GPLOGO_NW.png" width="28px" onmouseover="this.src='./img/GPLOGO_NWH.png'" onmouseout="this.src='./img/GPLOGO_NW.png'"/>
+            <img src="./img/GPLOGO_NW.png" width="28px" onmouseover="this.src='./img/GPLOGO_NWH.png'"
+                 onmouseout="this.src='./img/GPLOGO_NW.png'"/>
         </a>
         <a class="py-2 d-none d-md-inline-block" href="#">About us</a>
         <a class="py-2 d-none d-md-inline-block" href="./index.html">Product</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
-        <?php echo $head;?>
+        <?php echo $head; ?>
 
 
     </div>
@@ -142,9 +169,11 @@
     <div class="row">
         <div class="col-12 col-md">
             <a class="py-2" href="#">
-                <img src="./img/GPLOGO_NW.png" width="80px" onmouseover="this.src='./img/GPLOGO_NWH.png'" onmouseout="this.src='./img/GPLOGO_NW.png'"/>
+                <img src="./img/GPLOGO_NW.png" width="80px" onmouseover="this.src='./img/GPLOGO_NWH.png'"
+                     onmouseout="this.src='./img/GPLOGO_NW.png'"/>
             </a>
-            <small class="d-block mb-3 text-muted" style="font-size:7.5px"><b>&copy; 2018 SDWI Group 15 All Rights Reserved</b></small>
+            <small class="d-block mb-3 text-muted" style="font-size:7.5px"><b>&copy; 2018 SDWI Group 15 All Rights
+                    Reserved</b></small>
         </div>
         <div class="col-6 col-md">
             <h5>Features</h5>
@@ -191,7 +220,9 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="./bootstrap-4.0.0/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 <script src="./bootstrap-4.0.0/assets/js/vendor/popper.min.js"></script>
 <script src="./bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
