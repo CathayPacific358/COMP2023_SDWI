@@ -25,20 +25,25 @@
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
         $password = $row['password'];
-        if (hash("md5",$password)==$_GET['psw']) {
+        if (hash("md5", $password) == $_GET['psw']) {
             $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $_GET['user'] . "</a>
             <a class=\"py-2 d-none d-md-inline-block\" href=\"index.php\">Sign out</a>
             ";
+            $password = $_GET['psw'];
+            $index = "index.php?user=" . $username . "&psw=" . $password;
+            $contacts = "contacts.php?user=" . $username . "&psw=" . $password;
         }
         else {
             $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
-        <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
-            <a class=\"dropdown-item\" href=\"#\">Sign in as Admin</a>
-            <a class=\"dropdown-item\" href=\"./registration.php\">Sign in as Customer</a>
-            <a class=\"dropdown-item\" href=\"#\">Sign in as VIP</a>
-        </div>
-        <a class=\"py-2 d-none d-md-inline-block\" href=\"./login.php\">Sign up</a>
-        ";
+            <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
+                <a class=\"dropdown-item\" href=\"#\">Sign in as Admin</a>
+                <a class=\"dropdown-item\" href=\"./registration.php\">Sign in as Customer</a>
+                <a class=\"dropdown-item\" href=\"#\">Sign in as VIP</a>
+            </div>
+            <a class=\"py-2 d-none d-md-inline-block\" href=\"./login.php\">Sign up</a>
+            ";
+            $index = "index.php";
+            $contacts = "contacts.php";
         }
     }
     else {
@@ -50,6 +55,8 @@
         </div>
         <a class=\"py-2 d-none d-md-inline-block\" href=\"./login.php\">Sign up</a>
         ";
+        $index = "index.php";
+        $contacts = "contacts.php";
     }
     ?>
 </head>
@@ -62,7 +69,7 @@
                  onmouseout="this.src='./img/GPLOGO_NW.png'"/>
         </a>
         <a class="py-2 d-none d-md-inline-block" href="#">About us</a>
-        <a class="py-2 d-none d-md-inline-block" href="./index.html">Product</a>
+        <a class="py-2 d-none d-md-inline-block" href="<?php echo $index;?>">Product</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
         <?php echo $head; ?>
 
@@ -207,7 +214,7 @@
         <div class="col-6 col-md">
             <h5>Contact us</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="./contacts.php">Co-founders</a></li>
+                <li><a class="text-muted" href="<?php echo $contacts;?>">Co-founders</a></li>
                 <li><a class="text-muted" href="#">Locations</a></li>
                 <li><a class="text-muted" href="#">Privacy</a></li>
                 <li><a class="text-muted" href="#">Terms</a></li>
