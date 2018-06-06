@@ -41,7 +41,6 @@
             <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
                 <a class=\"dropdown-item\" href=\"./loginAdmin.php\">Sign in as Admin</a>
                 <a class=\"dropdown-item\" href=\"./login.php\">Sign in as Customer</a>
-                <a class=\"dropdown-item\" href=\"#\">Sign in as VIP</a>
             </div>
             <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
             ";
@@ -55,7 +54,6 @@
         <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
             <a class=\"dropdown-item\" href=\"loginAdmin.php\">Sign in as Admin</a>
             <a class=\"dropdown-item\" href=\"./login.php\">Sign in as Customer</a>
-            <a class=\"dropdown-item\" href=\"#\">Sign in as VIP</a>
         </div>
         <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
         ";
@@ -91,7 +89,12 @@
                                                                                           class="contactimg"></a>
                         <div class="f-contacts">
                             <h3>Sputnik Lee</h3>
-                            <p class="f-compstyle">Indescribable</p>
+                            <ul style="list-style: none; font-family: 'Calibri Light'; font-weight: normal;">
+                                <li>A CST year 1 student</li>
+                                <li>CO-FOUNDER of Plane Cup</li>
+                                <li>Chief function designer of the website</li>
+                                <li>E-mail: m730026044@mail.uic.edu.hk</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -100,7 +103,12 @@
                                                                                           class="contactimg"> </a>
                         <div class="f-contacts">
                             <h3>Frank Ng</h3>
-                            <p class="f-compstyle">Indescribable</p>
+                            <ul style="list-style: none; font-family: 'Calibri Light'; font-weight: normal;">
+                                <li>A CST year 1 student</li>
+                                <li>CO-FOUNDER of Plane Cup</li>
+                                <li>Chief style designer of the website</li>
+                                <li>E-mail: m730026119@mail.uic.edu.hk</li>
+                            </ul>
                         </div>
                     </div>
                 </div>

@@ -5,11 +5,24 @@
     font-weight: bold;
 }
 
-.f-handstyle h2{
+h2{
     font-family: "Bradley Hand ITC";
     text-align: center;
     font-weight: bold;
     color: black;
+}
+
+h3{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+ul{
+    font-size: 16px;
+    text-align: left;
+    font-weight: normal;
+    margin-top: 0;
 }
 
 .f-compstyle{
@@ -149,20 +162,8 @@
 .f-maintitle{
     font-size: 60px;
 }
-.f-contacts h3{
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 0;
-}
 
 .f-contacts{
     padding: 26px 30px;
     text-align: center;
-}
-
-.f-contacts p{
-    font-size: 16px;
-    text-align: center;
-    font-weight: normal;
-    margin-top: 0;
 }
