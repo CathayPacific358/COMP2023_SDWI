@@ -9,7 +9,7 @@
 
     <!-- Custom styles for this template -->
     <link href="./totalStyle.css" rel="stylesheet">
-    <link
+
     <?php
     session_start();
     $servername = "localhost";

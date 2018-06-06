@@ -41,6 +41,28 @@
     </div>
 </nav>
 
+<!-- Main Content -->
+<div class="contentbg">
+    <div class="container">
+        <h2 class="f-compstyle" style="font-size: 50px">Search Order</h2>
+        <form>
+            <div class="form-row">
+                <div class="col-3">
+                    <input type="text" class="form-control" placeholder="Username">
+                </div>
+                <div class="col-3">
+                    <input type="text" class="form-control" placeholder="City">
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-outline-info">Search</button>
+                    <button type="button" class="btn btn-outline-info">Sort Date-descending</button>
+                    <button type="button" class="btn btn-outline-info">Sort Date-ascending</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <!--- FOOTER --->
 <footer class="container py-5">
     <div class="row">
