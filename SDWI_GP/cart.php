@@ -42,7 +42,6 @@
             <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
                 <a class=\"dropdown-item\" href=\"./loginAdmin.php\">Sign in as Admin</a>
                 <a class=\"dropdown-item\" href=\"./login.php\">Sign in as Customer</a>
-                <a class=\"dropdown-item\" href=\"#\">Sign in as VIP</a>
             </div>
             <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
             ";
@@ -57,7 +56,6 @@
         <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
             <a class=\"dropdown-item\" href=\"#\">Sign in as Admin</a>
             <a class=\"dropdown-item\" href=\"./login.php\">Sign in as Customer</a>
-            <a class=\"dropdown-item\" href=\"#\">Sign in as VIP</a>
         </div>
         <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
         ";
@@ -86,16 +84,58 @@
 </nav>
 
 <div class="contentbg">
-    <div class="container">
-        <div>
-            <div class="bg-dark img-thumbnail">
-                <img class="img-thumbnail" src="./img/cake1.jpg" width="20%">
-                <span class="text-white f-compstyle" style="font-size: 30px;">mini-FERRERO</span>
-                <span class="text-white f-handstyle" style="font-size: 20px;"><input type="checkbox" name="fruit" class="text-white">Fruit</span>
-                <span class="text-white f-handstyle" style="font-size: 20px;"><input type="checkbox" name="chocolate" class="text-white">Chocolate</span>
+    <div class="container table-responsive">
+        <table class="table invoice-table">
+            <tr>
+                <th>Type of cake</th>
+                <th>Size</th>
+                <th>Amount</th>
+                <th>Price per cake</th>
+                <th>Total</th>
+            </tr>
+
+            <tr>
+                <td><div></div></td>
+                <td><div></div></td>
+                <td><div></div></td>
+                <td><div></div></td>
+                <td><div></div></td>
+            </tr>
+        </table>
+
+        <form class="was-validated">
+            <span class="f-compstyle">Free extra topping: </span><br/>
+            <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="fruit" required>
+                <label class="custom-control-label" for="fruit">Fruits</label>
             </div>
+            <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="chocolate" required>
+                <label class="custom-control-label" for="chocolate">Chocolate</label>
+            </div>
+            <span class="f-compstyle">Free gift card: </span>
+            <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="giftcard" required>
+                <label class="custom-control-label" for="giftcard">Order giftcard</label>
+            </div>
+            <span class="f-compstyle">Leave your gift message or comment: </span>
+            <div class="custom-control custom-checkbox" mb-3>
+                <textarea class="form-control col-md-5" id="giftmes" rows="2"required></textarea>
+            </div>
+        </form>
+
+        <br/>
+
+        <table class="table invoice-total">
+            <tr>
+                <td><strong>Total Price</strong>
+                </td>
+                <td>123</td>
+            </tr>
+        </table>
+        <div class="text-right">
+            <button class="btn btn-outline-info"><i class="fa fa-dollar"></i>Order & Purchase</button>
         </div>
-    </div>
     </div>
 </div>
 
