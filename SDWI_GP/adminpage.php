@@ -29,7 +29,7 @@
         if ((hash("md5", $password) == $_GET['psw']) && ($admincheck = "Y")) {
             $adminpage = "adminpage.php?user=" . $username . "&psw=" . $password;
             $head = "
-            <a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello admin, " . $_GET['user'] . "</a>
+            <a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $_GET['user'] . " [ admin ]</a>
             <a class=\"py-2 d-none d-md-inline-block\" href=\"index.php\">Sign out</a>
             ";
             $password = $_GET['psw'];
