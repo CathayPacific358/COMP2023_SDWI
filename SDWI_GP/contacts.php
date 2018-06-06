@@ -12,54 +12,24 @@
     <link href="./bootstrap-4.0.0/dist/css/gallery.css" rel="stylesheet">
     <link href="./bootstrap-4.0.0/dist/css/baguetteBox.min.css" rel="stylesheet">
     <?php
-
+    session_start();
     $servername = "localhost";
-    $dbusername = "root";
-    $dbpassword = "";
-    $dbname = "planecup";
-    $mes = $password = $username = "";
-
-    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-
-    if (!empty($_GET['user']) && !empty($_GET['psw'])) {
-        $username = $_GET['user'];
-        $sql = "SELECT password FROM user WHERE username = '$username'";
-        $result = $conn->query($sql);
-        $row = $result->fetch_assoc();
-        $password = $row['password'];
-        if (hash("md5", $password) == $_GET['psw']) {
-            $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $_GET['user'] . "</a>
-            <a class=\"py-2 d-none d-md-inline-block\" href=\"index.php\">Sign out</a>
+    if (isset($_SESSION['user'])) {
+        $username = $_SESSION['user'];
+        $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $username . "</a>
+            <a class=\"py-2 d-none d-md-inline-block\" href=\"logout.php\">Sign out</a>
             ";
-            $password = $_GET['psw'];
-            $index = "index.php?user=" . $username . "&psw=" . $password;
-            $contacts = "contacts.php?user=" . $username . "&psw=" . $password;
-            $homepage = "homepage.php?user=" . $username . "&psw=" . $password;
-        }
-        else {
-            $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
-            <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
-                <a class=\"dropdown-item\" href=\"./loginAdmin.php\">Sign in as Admin</a>
-                <a class=\"dropdown-item\" href=\"./login.php\">Sign in as Customer</a>
-            </div>
-            <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
-            ";
-            $index = "index.php";
-            $contacts = "contacts.php";
-            $homepage = "homepage.php";
-        }
+
+
     }
     else {
         $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
         <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
-            <a class=\"dropdown-item\" href=\"loginAdmin.php\">Sign in as Admin</a>
+            <a class=\"dropdown-item\" href=\"./loginAdmin.php\">Sign in as Admin</a>
             <a class=\"dropdown-item\" href=\"./login.php\">Sign in as Customer</a>
         </div>
         <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
         ";
-        $index = "index.php";
-        $contacts = "contacts.php";
-        $homepage = "homepage.php";
     }
     ?>
 
@@ -89,12 +59,7 @@
                                                                                           class="contactimg"></a>
                         <div class="f-contacts">
                             <h3>Sputnik Lee</h3>
-                            <ul style="list-style: none; font-family: 'Calibri Light'; font-weight: normal;">
-                                <li>A CST year 1 student</li>
-                                <li>CO-FOUNDER of Plane Cup</li>
-                                <li>Chief function designer of the website</li>
-                                <li>E-mail: m730026044@mail.uic.edu.hk</li>
-                            </ul>
+                            <p class="f-compstyle">Indescribable</p>
                         </div>
                     </div>
                 </div>
@@ -103,12 +68,7 @@
                                                                                           class="contactimg"> </a>
                         <div class="f-contacts">
                             <h3>Frank Ng</h3>
-                            <ul style="list-style: none; font-family: 'Calibri Light'; font-weight: normal;">
-                                <li>A CST year 1 student</li>
-                                <li>CO-FOUNDER of Plane Cup</li>
-                                <li>Chief style designer of the website</li>
-                                <li>E-mail: m730026119@mail.uic.edu.hk</li>
-                            </ul>
+                            <p class="f-compstyle">Indescribable</p>
                         </div>
                     </div>
                 </div>

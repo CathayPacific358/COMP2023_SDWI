@@ -166,8 +166,8 @@
         <div class="col-6 col-md">
             <h5>Quick Portal</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="<?php echo $homepage?>">About us</a></li>
-                <li><a class="text-muted" href="<?php echo $index?>">Product</a></li>
+                <li><a class="text-muted" href="homepage.php">About us</a></li>
+                <li><a class="text-muted" href="index.php">Product</a></li>
                 <li><a class="text-muted" href="#">Cart</a></li>
             </ul>
         </div>
@@ -182,7 +182,7 @@
         <div class="col-6 col-md">
             <h5>Contact us</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="<?php echo $contacts;?>">Co-founders</a></li>
+                <li><a class="text-muted" href="contacts.php">Co-founders</a></li>
             </ul>
         </div>
     </div>

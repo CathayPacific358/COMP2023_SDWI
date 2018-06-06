@@ -27,6 +27,7 @@
         if ($result->num_rows > 0) {
             $_SESSION['user'] = $username;
             $_SESSION['psw'] = $password;
+            for($i=0;$i<9;++$i) $_SESSION['cake'.$i]=0;
             header("Location:index.php");
             die;
         }

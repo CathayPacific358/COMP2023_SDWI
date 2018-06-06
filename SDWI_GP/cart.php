@@ -10,132 +10,105 @@
     <!-- Custom styles for this template -->
     <link href="./totalStyle.css" rel="stylesheet">
     <?php
-
+    session_start();
     $servername = "localhost";
-    $dbusername = "root";
-    $dbpassword = "";
-    $dbname = "planecup";
-    $mes = $password = $username = "";
+    $applicate = $mes = "";
+    if (isset($_SESSION['user'])) {
 
-    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+        $username = $_SESSION['user'];
+        $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $username . "</a>
+            <a class=\"py-2 d-none d-md-inline-block\" href=\"logout.php\">Sign out</a>
+            ";
+        $cake = array("mini-FERRERO", "Lavender Queen", "La Framboise", "Bruja mágica", "北海道の深い冬。", "Dreaming Cream", "Soul of Chocolate", "雪のお姫様", "Merry Christmas!");
+        $price = array(12, 9, 10, 15, 12, 8, 13, 12, 16);
+        $_SESSION['cake1'] = 2;
+        $_SESSION['cake8'] = 2;
+        $application = "<tr><th>Type of cake</th><th>Amount</th><th>Price per cake</th></tr>
+            <tr><td><div></div></td><td><div></div></td><td><div></div></td><td><div></div></td></tr>";
+        for ($i = 0; $i < 9; ++$i) {
+            if ($_SESSION["cake" . $i] > 0) {
+                $num = $_SESSION["cake" . $i];
+                $application .= "<tr><td>" . $cake[$i] . "</td><td>
+                <input type='number' class=' btn btn-outline-danger btn-sm p-2 col-md-3' name='cake" . $i . "'  value='" . $num . "' min='0'></td>
+                <td>" . $price[$i] . "</td><tr>";
+            }
 
-    if (!empty($_GET['user']) && !empty($_GET['psw'])) {
-        $username = $_GET['user'];
-        $sql = "SELECT password FROM user WHERE username = '$username'";
-        $result = $conn->query($sql);
-        $row = $result->fetch_assoc();
-        $password = $row['password'];
-        if (hash("md5", $password) == $_GET['psw']) {
-            $head = "
-            <a class=\"py-2 d-none d-md-inline-block\" href=\"adminpage.php\">Manage</a>
-            <a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $_GET['user'] . "</a>
-            <a class=\"py-2 d-none d-md-inline-block\" href=\"index.php\">Sign out</a>
-            ";
-            $password = $_GET['psw'];
-            $index = "index.php?user=" . $username . "&psw=" . $password;
-            $contacts = "contacts.php?user=" . $username . "&psw=" . $password;
-            $homepage = "homepage.php?user=" . $username . "&psw=" . $password;
-            $adminpage = "adminpage.php?user=" . $username . "&psw=" . $password;
+
         }
-        else {
-            $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
-            <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
-                <a class=\"dropdown-item\" href=\"./loginAdmin.php\">Sign in as Admin</a>
-                <a class=\"dropdown-item\" href=\"./login.php\">Sign in as Customer</a>
-            </div>
-            <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
-            ";
-            $index = "index.php";
-            $contacts = "contacts.php";
-            $homepage = "homepage.php";
-            $adminpage = "adminpage.php";
-        }
+        $application .= "</tr>";
     }
     else {
-        $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
-        <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
-            <a class=\"dropdown-item\" href=\"#\">Sign in as Admin</a>
-            <a class=\"dropdown-item\" href=\"./login.php\">Sign in as Customer</a>
-        </div>
-        <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
-        ";
-        $index = "index.php";
-        $contacts = "contacts.php";
-        $homepage = "homepage.php";
-        $adminpage= "adminpage.php";
+        if (isset($_SERVER["HTTP_REFERER"])) header("Location:" . $_SERVER["HTTP_REFERER"]);
+        else header("Location:homepage.php");
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $totalprice = 0;
+        for ($i = 0; $i < 9; ++$i) {
+            if ($_POST['cake'.$i] > 0)
+                $totalprice += $_POST['cake'.$i] * $price[$i];
+        }
+        $mes = "<table class=\"table invoice-total\">
+        <tr>
+            <td><strong>Total Price</strong>
+            </td>
+            <td>".$totalprice."</td>
+        </tr>
+        </table>
+        </form>
+        <div class=\"text-right\">
+            <button class=\"btn btn-outline-info\"><i class=\"fa fa-dollar\"></i>Order & Purchase</button>
+        </div>";
     }
     ?>
 </head>
-<body>
+
 
 <nav class="sticky-top py-1 site-header f-handstyle">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2" href="<?php echo $homepage;?>">
+        <a class="py-2" href="homepage.php">
             <img src="./img/GPLOGO_NW.png" width="28px" onmouseover="this.src='./img/GPLOGO_NWH.png'"
                  onmouseout="this.src='./img/GPLOGO_NW.png'"/>
         </a>
-        <a class="py-2 d-none d-md-inline-block" href="<?php echo $homepage;?>">About us</a>
-        <a class="py-2 d-none d-md-inline-block" href="<?php echo $index;?>">Product</a>
+        <a class="py-2 d-none d-md-inline-block" href="homepage.php">About us</a>
+        <a class="py-2 d-none d-md-inline-block" href="index.php">Product</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
         <?php echo $head; ?>
-
-
     </div>
 </nav>
 
 <div class="contentbg">
     <div class="container table-responsive">
         <table class="table invoice-table">
-            <tr>
-                <th>Type of cake</th>
-                <th>Size</th>
-                <th>Amount</th>
-                <th>Price per cake</th>
-                <th>Total</th>
-            </tr>
-
-            <tr>
-                <td><div></div></td>
-                <td><div></div></td>
-                <td><div></div></td>
-                <td><div></div></td>
-                <td><div></div></td>
-            </tr>
+            <?php echo $application; ?>
         </table>
 
-        <form class="was-validated">
+        <form class="was-validated " action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="Post">
             <span class="f-compstyle">Free extra topping: </span><br/>
             <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" id="fruit" required>
+                <input type="checkbox" class="custom-control-input" id="fruit">
                 <label class="custom-control-label" for="fruit">Fruits</label>
             </div>
             <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" id="chocolate" required>
+                <input type="checkbox" class="custom-control-input" id="chocolate">
                 <label class="custom-control-label" for="chocolate">Chocolate</label>
             </div>
             <span class="f-compstyle">Free gift card: </span>
             <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" id="giftcard" required>
+                <input type="checkbox" class="custom-control-input" id="giftcard">
                 <label class="custom-control-label" for="giftcard">Order giftcard</label>
             </div>
             <span class="f-compstyle">Leave your gift message or comment: </span>
             <div class="custom-control custom-checkbox" mb-3>
-                <textarea class="form-control col-md-5" id="giftmes" rows="2"required></textarea>
+                <textarea class="form-control col-md-5" id="giftmes" rows="2"></textarea>
             </div>
-        </form>
+            <br>
+            <br>
+            <button class="btn btn-lg btn-outline-danger btn-block f-handstyle" type="submit">check</button>
 
-        <br/>
+            <br/>
 
-        <table class="table invoice-total">
-            <tr>
-                <td><strong>Total Price</strong>
-                </td>
-                <td>123</td>
-            </tr>
-        </table>
-        <div class="text-right">
-            <button class="btn btn-outline-info"><i class="fa fa-dollar"></i>Order & Purchase</button>
-        </div>
+
     </div>
 </div>
 
@@ -153,8 +126,8 @@
         <div class="col-6 col-md">
             <h5>Quick Portal</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="<?php echo $homepage?>">About us</a></li>
-                <li><a class="text-muted" href="<?php echo $index?>">Product</a></li>
+                <li><a class="text-muted" href="homepage.php">About us</a></li>
+                <li><a class="text-muted" href="index.php">Product</a></li>
                 <li><a class="text-muted" href="#">Cart</a></li>
             </ul>
         </div>
@@ -169,11 +142,23 @@
         <div class="col-6 col-md">
             <h5>Contact us</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="<?php echo $contacts;?>">Co-founders</a></li>
+                <li><a class="text-muted" href="contacts.php">Co-founders</a></li>
             </ul>
         </div>
     </div>
 </footer>
+
+<script>
+    var i, total, name, price, totalname;
+    for (i = 0; i < 9; ++i) {
+        name = "cake" + i;
+        price = "price" + i;
+        totalname = "total" + i;
+        if (document.getElementById(name).value > 0)
+            total = document.getElementById(name).value * document.getElementById(price).value;
+        document.getElementById(totalname).innerText = total;
+    }
+</script>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
