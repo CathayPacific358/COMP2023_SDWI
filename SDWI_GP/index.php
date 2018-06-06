@@ -10,43 +10,17 @@
     <!-- Custom styles for this template -->
     <link href="./totalStyle.css" rel="stylesheet">
     <?php
-
+    session_start();
     $servername = "localhost";
-    $dbusername = "root";
-    $dbpassword = "";
-    $dbname = "planecup";
-    $mes = $password = $username = "";
-
-    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-
-    if (!empty($_GET['user']) && !empty($_GET['psw'])) {
-        $username = $_GET['user'];
-        $sql = "SELECT password FROM user WHERE username = '$username'";
-        $result = $conn->query($sql);
-        $row = $result->fetch_assoc();
-        $password = $row['password'];
-        if (hash("md5", $password) == $_GET['psw']) {
-            $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $_GET['user'] . "</a>
-            <a class=\"py-2 d-none d-md-inline-block\" href=\"index.php\">Sign out</a>
+    if (isset($_SESSION['user'])) {
+        $username = $_SESSION['user'];
+        $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $username . "</a>
+            <a class=\"py-2 d-none d-md-inline-block\" href=\"logout.php\">Sign out</a>
             ";
-            $password = $_GET['psw'];
-            $index = "index.php?user=" . $username . "&psw=" . $password;
-            $contacts = "contacts.php?user=" . $username . "&psw=" . $password;
-            $homepage = "homepage.php?user=" . $username . "&psw=" . $password;
-        } else {
-            $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
-            <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
-                <a class=\"dropdown-item\" href=\"./loginAdmin.php\">Sign in as Admin</a>
-                <a class=\"dropdown-item\" href=\"./login.php\">Sign in as Customer</a>
-                <a class=\"dropdown-item\" href=\"#\">Sign in as VIP</a>
-            </div>
-            <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
-            ";
-            $index = "index.php";
-            $contacts = "contacts.php";
-            $homepage = "homepage.php";
-        }
-    } else {
+
+
+    }
+    else {
         $head = "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Sign in</a>
         <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
             <a class=\"dropdown-item\" href=\"./loginAdmin.php\">Sign in as Admin</a>
@@ -54,9 +28,6 @@
         </div>
         <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
         ";
-        $index = "index.php";
-        $contacts = "contacts.php";
-        $homepage = "homepage.php";
     }
     ?>
 </head>
@@ -64,16 +35,14 @@
 
 <nav class="sticky-top py-1 site-header f-handstyle">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2" href="<?php echo $homepage;?>">
+        <a class="py-2" href="homepage.php">
             <img src="./img/GPLOGO_NW.png" width="28px" onmouseover="this.src='./img/GPLOGO_NWH.png'"
                  onmouseout="this.src='./img/GPLOGO_NW.png'"/>
         </a>
-        <a class="py-2 d-none d-md-inline-block" href="<?php echo $homepage; ?>">About us</a>
-        <a class="py-2 d-none d-md-inline-block" href="<?php echo $index; ?>">Product</a>
+        <a class="py-2 d-none d-md-inline-block" href="homepage">About us</a>
+        <a class="py-2 d-none d-md-inline-block" href="index.php">Product</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
         <?php echo $head; ?>
-
-
     </div>
 </nav>
 
@@ -228,8 +197,8 @@
         <div class="col-6 col-md">
             <h5>Quick Portal</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="<?php echo $homepage?>">About us</a></li>
-                <li><a class="text-muted" href="<?php echo $index?>">Product</a></li>
+                <li><a class="text-muted" href="homepage.php">About us</a></li>
+                <li><a class="text-muted" href="index.php">Product</a></li>
                 <li><a class="text-muted" href="#">Cart</a></li>
             </ul>
         </div>
@@ -244,7 +213,7 @@
         <div class="col-6 col-md">
             <h5>Contact us</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="<?php echo $contacts;?>">Co-founders</a></li>
+                <li><a class="text-muted" href="contacts.php">Co-founders</a></li>
             </ul>
         </div>
     </div>

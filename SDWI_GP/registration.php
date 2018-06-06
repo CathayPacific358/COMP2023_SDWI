@@ -77,13 +77,14 @@
             $err++;
         }
 
-        if (!preg_match("/^[a-zA-Z0-9,\.\ ]{5,}$/", $address)) {
+        if (!preg_match("/^[a-zA-Z0-9,\.\ ]{4,}$/", $address)) {
             $addresserr = "<div id='myAlert' class='alert alert-danger'><a href='#' class='close' width='auto' data-dismiss='alert'>&times;
                     </a>Incorrect address</div> ";
             $err++;
         }
 
         if ($err == 0) {
+            $password = hash("md5",$password);
             $sql = "insert into user (username,password,tel_num,email,address,admin,city)
             values ('$username','$password','$telnum','$email','$address','N','$city')";
             $result = $conn->query($sql);

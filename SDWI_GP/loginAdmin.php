@@ -9,6 +9,7 @@
     <!-- Custom styles for this template -->
     <link href="./totalStyle.css" rel="stylesheet">
     <?php
+    session_start();
     $servername = "localhost";
     $dbusername = "root";
     $dbpassword = "";
@@ -20,7 +21,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $err = 0;
         $username = $_POST['username'];
-        $password = $_POST['password'];
+        $password = hash("md5",$_POST['password']);
         $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
@@ -28,7 +29,9 @@
             if($row['admin']=='Y')
             {
                 $password=hash("md5",$password);
-                header("Location:adminpage.php?user=$username&psw=$password");
+                $_SESSION['user'] = $username;
+                $_SESSION['psw'] = $password;
+                header("Location:adminpage.php");
                 die;
             }
             else{
@@ -74,7 +77,7 @@
         <h1 class="h3 mb-3 font-weight-bold f-handstyle">Sign in as admin</h1><?php echo $mes;?>
         <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" style="width: 300px;" value="<?php echo $username;?>" required autofocus>
         <br/>
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" value="<?php echo $password;?>" required>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
         <br/>
         <button class="btn btn-lg btn-outline-info btn-block f-handstyle" type="submit">Sign in</button>
     </form>
@@ -94,8 +97,8 @@
         <div class="col-6 col-md">
             <h5>Quick Portal</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="<?php echo $homepage?>">About us</a></li>
-                <li><a class="text-muted" href="<?php echo $index?>">Product</a></li>
+                <li><a class="text-muted" href="homepage.php">About us</a></li>
+                <li><a class="text-muted" href="index.php">Product</a></li>
                 <li><a class="text-muted" href="#">Cart</a></li>
             </ul>
         </div>
@@ -110,7 +113,7 @@
         <div class="col-6 col-md">
             <h5>Contact us</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="<?php echo $contacts;?>">Co-founders</a></li>
+                <li><a class="text-muted" href="contacts.php">Co-founders</a></li>
             </ul>
         </div>
     </div>
