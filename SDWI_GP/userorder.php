@@ -85,6 +85,19 @@
     </div>
 </nav>
 
+<div class="contentbg">
+    <div class="container">
+        <div>
+            <div class="bg-dark img-thumbnail">
+                <img class="img-thumbnail" src="./img/cake1.jpg" width="20%">
+                <span class="text-white f-compstyle" style="font-size: 30px;">mini-FERRERO</span>
+                <span class="text-white f-handstyle" style="font-size: 20px;"><input type="checkbox" name="fruit" class="text-white">Fruit</span>
+                <span class="text-white f-handstyle" style="font-size: 20px;"><input type="checkbox" name="chocolate" class="text-white">Chocolate</span>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
 
 <!--- FOOTER --->
 <footer class="container py-5">

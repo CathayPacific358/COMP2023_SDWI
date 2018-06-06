@@ -21,22 +21,26 @@
         $err = 0;
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password' AND admin = 'Y'";
-        $adminsql = "SELECT admin FROM user WHERE username = '$username'";
+        $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
         $result = $conn->query($sql);
-        $adminresult = $conn->query($adminsql);
-
+        $row = $result->fetch_assoc();
         if ($result->num_rows > 0) {
-            $password=hash("md5",$password);
-            header("Location:index.php?user=$username&psw=$password&admin");
-            die;
-        }
-        else if(($result -> num_rows == 0) && ($adminresult -> num_rows > 0)){
-            $mes ="<div id='myAlert' class='alert alert-warning'><a href='#' class='close' width='auto' data-dismiss='alert'>&times;</a><p>Incorrect username or password.</p></div> ";
-            die;
+            if($row['admin']=='Y')
+            {
+                $password=hash("md5",$password);
+                header("Location:adminpage.php?user=$username&psw=$password");
+                die;
+            }
+            else{
+                $mes ="<div id='myAlert' class='alert alert-danger'>
+                <a href='#' class='close' width='auto' data-dismiss='alert'>&times;</a>
+                <p>Not authorised as an admin.</p></div> ";
+            }
         }
         else{
-            $mes ="<div id='myAlert' class='alert alert-danger'><a href='#' class='close' width='auto' data-dismiss='alert'>&times;</a><p>Not authroised as an admin.</p></div> ";
+            $mes ="<div id='myAlert' class='alert alert-danger'>
+            <a href='#' class='close' width='auto' data-dismiss='alert'>&times;</a>
+            <p>Incorrect username or password.</p></div> ";
         }
     }
 
@@ -58,7 +62,6 @@
         <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="./loginAdmin.php">Sign in as Admin</a>
             <a class="dropdown-item" href="./login.php">Sign in as Customer</a>
-            <a class="dropdown-item" href="#">Sign in as VIP</a>
         </div>
         <a class="py-2 d-none d-md-inline-block" href="./registration.php">Sign up</a>
     </div>
@@ -73,7 +76,7 @@
         <br/>
         <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" value="<?php echo $password;?>" required>
         <br/>
-        <button class="btn btn-lg btn-outline-danger btn-block f-handstyle" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-outline-info btn-block f-handstyle" type="submit">Sign in</button>
     </form>
 </div>
 
