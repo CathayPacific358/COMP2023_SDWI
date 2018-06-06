@@ -29,7 +29,7 @@
             die;
         }
         else{
-            $mes ="<div id='myAlert' class='alert alert-warning'><a href='#' class='close' width='auto' data-dismiss='alert'>&times;</a><p>Incorrect username or password.</p></div> ";
+            $mes ="<div id='myAlert' class='alert alert-danger'><a href='#' class='close' width='auto' data-dismiss='alert'>&times;</a><p>Incorrect username or password.</p></div> ";
         }
     }
 
@@ -64,9 +64,9 @@
         <h1 class="h3 mb-3 font-weight-bold f-handstyle">Sign in</h1><?php echo $mes;?>
         <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" style="width: 300px;" value="<?php echo $username;?>" required autofocus>
         <br/>
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" value="<?php echo $password;?>" required>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" style="width: 300px;" value="<?php echo $password;?>" required>
         <br/>
-        <button class="btn btn-lg btn-outline-info btn-block f-handstyle" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-outline-info btn-block f-handstyle" style="width: 300px;" type="submit">Sign in</button>
     </form>
 </div>
 
