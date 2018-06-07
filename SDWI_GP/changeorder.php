@@ -36,8 +36,8 @@
         </a>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="./loginAdmin.php">Search Orders</a>
-            <a class="dropdown-item" href="./login.php">Change Orders</a>
+            <a class="dropdown-item" href="./adminvieworder.php">Search Orders</a>
+            <a class="dropdown-item" href="./changeorder.php">Change Orders</a>
         </div>
         <?php echo $head; ?>
     </div>
@@ -219,12 +219,12 @@ $_SESSION['warn'] = "";
         text: 'Thumbnail'
     });
 </script>
-<script>
+<script>//submit form using button
     $("#del").click(function(){
         $("#deleteForm").submit();
     });
 </script>
-<script>
+<script>//submit form using button
     $("#add").click(function(){
         $("#addForm").submit();
     });

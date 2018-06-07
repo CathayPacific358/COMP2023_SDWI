@@ -107,7 +107,7 @@
         </a>
         <a class="py-2 d-none d-md-inline-block" href="./homepage.php">About us</a>
         <a class="py-2 d-none d-md-inline-block" href="./index.php">Product</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
+        <a class="py-2 d-none d-md-inline-block" href="./cart.php">Cart</a>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
            aria-expanded="false">Sign in</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -156,7 +156,7 @@
 <footer class="container py-5">
     <div class="row">
         <div class="col-12 col-md">
-            <a class="py-2" href="#">
+            <a class="py-2" href="./homepage.php">
                 <img src="./img/GPLOGO_NW.png" width="80px" onmouseover="this.src='./img/GPLOGO_NWH.png'"
                      onmouseout="this.src='./img/GPLOGO_NW.png'"/>
             </a>
@@ -168,7 +168,7 @@
             <ul class="list-unstyled text-small">
                 <li><a class="text-muted" href="homepage.php">About us</a></li>
                 <li><a class="text-muted" href="index.php">Product</a></li>
-                <li><a class="text-muted" href="#">Cart</a></li>
+                <li><a class="text-muted" href="./cart.php">Cart</a></li>
             </ul>
         </div>
         <div class="col-6 col-md">

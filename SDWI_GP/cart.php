@@ -18,7 +18,7 @@
         if (empty($_SESSION['custmes'])) $_SESSION['custmes'] = "";
         if (empty($_SESSION['giftcard'])) $_SESSION['giftcard'] = "";
         $username = $_SESSION['user'];
-        $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $username . "</a>
+        $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"./customervieworder.php\">Hello, " . $username . "</a>
             <a class=\"py-2 d-none d-md-inline-block\" href=\"logout.php\">Sign out</a>
             ";
         $cake = array("mini-FERRERO", "Lavender Queen", "La Framboise", "Bruja mágica", "北海道の深い冬。", "Dreaming Cream", "Soul of Chocolate", "雪のお姫様", "Merry Christmas!");
@@ -186,7 +186,7 @@
             <ul class="list-unstyled text-small">
                 <li><a class="text-muted" href="homepage.php">About us</a></li>
                 <li><a class="text-muted" href="index.php">Product</a></li>
-                <li><a class="text-muted" href="#">Cart</a></li>
+                <li><a class="text-muted" href="./cart.php">Cart</a></li>
             </ul>
         </div>
         <div class="col-6 col-md">

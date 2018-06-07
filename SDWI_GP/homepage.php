@@ -14,7 +14,7 @@
     $servername = "localhost";
     if (isset($_SESSION['user'])) {
         $username = $_SESSION['user'];
-        $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $username . "</a>
+        $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"./customervieworder.php\">Hello, " . $username . "</a>
             <a class=\"py-2 d-none d-md-inline-block\" href=\"logout.php\">Sign out</a>
             ";
 
@@ -72,7 +72,7 @@
 <footer class="container py-5">
     <div class="row">
         <div class="col-12 col-md">
-            <a class="py-2" href="#">
+            <a class="py-2" href="./homepage.php">
                 <img src="./img/GPLOGO_NW.png" width="80px" onmouseover="this.src='./img/GPLOGO_NWH.png'"
                      onmouseout="this.src='./img/GPLOGO_NW.png'"/>
             </a>
@@ -84,7 +84,7 @@
             <ul class="list-unstyled text-small">
                 <li><a class="text-muted" href="homepage.php">About us</a></li>
                 <li><a class="text-muted" href="index.php">Product</a></li>
-                <li><a class="text-muted" href="#">Cart</a></li>
+                <li><a class="text-muted" href="./cart.php">Cart</a></li>
             </ul>
         </div>
         <div class="col-6 col-md">
