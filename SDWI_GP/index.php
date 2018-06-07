@@ -53,6 +53,7 @@
     <div class="box-shadow d-none d-md-block"></div>
 </div>
 
+<form>
 <!-- ROW ONE -->
 <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
     <div class="bg-dark mr-md-3 pt-3 pt-md-5 text-center text-white overflow-hidden">
@@ -60,9 +61,9 @@
             <h2 class="display-5">- mini-FERRERO -</h2>
             <p class="lead f-handstyle">Chocolate in love with chocolate.</p>
             <br/>
-            <input type="button" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes" value="Small (x1)">
-            <input type="button" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes" value="Medium (x2)">
-            <input type="button" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes" value="Large (x3)">
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Large (x3)">
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake1.jpg" class="indeximg"/>
@@ -74,9 +75,9 @@
             <h2 class="display-5">- Lavender Queen -</h2>
             <p class="lead f-handstyle">Great purple, incredible.</p>
             <br/>
-            <button class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#cartmes">Small (x1)</button>
-            <button class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#cartmes">Medium (x2)</button>
-            <button class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#cartmes">Large (x3)</button>
+            <input type="submit" class="btn btn-sm btn-outline-dark" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" value="Large (x3)">
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake2.jpg" class="indeximg"/>
@@ -88,9 +89,9 @@
             <h2 class="display-5">- La Framboise -</h2>
             <p class="lead f-handstyle">Raspberry, a sweet story.</p>
             <br/>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Small (x1)</button>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Medium (x2)</button>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Large (x3)</button>
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Large (x3)">
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake3.jpg" class="indeximg"/>
@@ -105,9 +106,9 @@
             <h2 class="display-5">- Bruja mágica -</h2>
             <p class="lead f-handstyle">Vanished, leaving a hat.</p>
             <br/>
-            <button class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#cartmes">Small (x1)</button>
-            <button class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#cartmes">Medium (x2)</button>
-            <button class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#cartmes">Large (x3)</button>
+            <input type="submit" class="btn btn-sm btn-outline-dark" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" value="Large (x3)">
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake9.jpg" class="indeximg"/>
@@ -118,9 +119,9 @@
             <h2 class="display-5">- 北海道の深い冬。 -</h2>
             <p class="lead f-handstyle">Snowflake & pearl, you & me.</p>
             <br/>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Small (x1)</button>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Medium (x2)</button>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Large (x3)</button>
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Large (x3)">
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake6.jpg" class="indeximg"/>
@@ -131,9 +132,9 @@
             <h2 class="display-5">- Dreaming Cream -</h2>
             <p class="lead f-handstyle">And an even wittier subheading.</p>
             <br/>
-            <button class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#cartmes">Small (x1)</button>
-            <button class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#cartmes">Medium (x2)</button>
-            <button class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#cartmes">Large (x3)</button>
+            <input type="submit" class="btn btn-sm btn-outline-dark" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" value="Large (x3)">
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake5.jpg" class="indeximg"/>
@@ -149,9 +150,9 @@
             <h2 class="display-5">- Soul of Chocolate -</h2>
             <p class="lead f-handstyle">His soul - Ms.Marshmallow.</p>
             <br/>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Small (x1)</button>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Medium (x2)</button>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Large (x3)</button>
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Large (x3)">
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake4.jpg" class="indeximg"/>
@@ -162,9 +163,9 @@
             <h2 class="display-5">- 雪のお姫様 -</h2>
             <p class="lead f-handstyle">Loving deeply like snows.</p>
             <br/>
-            <button class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#cartmes">Small (x1)</button>
-            <button class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#cartmes">Medium (x2)</button>
-            <button class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#cartmes">Large (x3)</button>
+            <input type="submit" class="btn btn-sm btn-outline-dark" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" value="Large (x3)">
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake7.jpg" class="indeximg"/>
@@ -175,31 +176,16 @@
             <h2 class="display-5">- Merry Christmas! -</h2>
             <p class="lead f-handstyle">Everyday is new year.</p>
             <br/>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Small (x1)</button>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Medium (x2)</button>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Large (x3)</button>
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-light" value="Large (x3)">
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake8.jpg" class="indeximg"/>
         </div>
     </div>
 </div>
-
-<!-- MODAL of upper buttons -->
-<div class="modal fade" id="cartmes" tabindex="-1" role="dialog" aria-labelledby="cartmesLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title f-handstyle" id="cartmesLabel">Please confirm</h4>
-            </div>
-            <div class="modal-body f-compstyle">Adding "cake name and number" into cart?</div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-outline-info">Confirm</button>
-            </div>
-        </div>
-    </div>
-</div>
+</form>
 
 <!--- FOOTER --->
 <footer class="container py-5">
