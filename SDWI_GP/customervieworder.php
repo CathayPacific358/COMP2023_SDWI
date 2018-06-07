@@ -13,6 +13,16 @@
     <?php
     session_start();
     $servername = "localhost";
+    $dbusername = "root";
+    $dbpassword = "";
+    $dbname = "planecup";
+    $mes = $password = $username = "";
+
+    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
     if (isset($_SESSION['user'])) {
         $username = $_SESSION['user'];
         $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $username . "</a>
@@ -31,6 +41,36 @@
         ";
     }
 
+
+    $previousOrders = "";
+
+    $sql = "SELECT * FROM userbook WHERE username = '$username' ORDER BY ordertime desc";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        $previousOrders .=
+            "<table class='table f-handstyle'>
+			<thead class='thead-dark' style='font-size: 16px;'>
+			<tr>
+			    <th scope='col'>Order Time</th>
+				<th scope='col'>Username</th>
+				<th scope='col'>Cake Type</th>
+				<th scope='col' style='font-size: 13px;'>Size (In amount)</th>
+				<th scope='col' style='font-size: 13px;'>Gift Card</th>
+				<th scope='col'>Comment</th>
+				<th scope='col'>Toppings</th>
+			</thead><tbody>";
+        while($row = $result->fetch_assoc()) {
+            $previousOrders .= "<tr><td>" . $row["ordertime"]. "</td><td>" . $row["username"]. "</td><td>" . $row["cake"]. "</td><td>" .$row["amount"]. "</td><td>" . $row["giftcard"] . "</td><td>". $row["comment"] . "</td><td>". $row["toppings"]. "</td></tr>";
+        }
+        $previousOrders .= "</tbody></table>";
+    } else {
+        $previousOrders = "<p class='f-handstyle'>No order in your account. <a class='text-dark'href='./index.php'>Order your favourite now!</a></p>";
+    }
+
+
+    $conn->close();
     ?>
 </head>
 <body>
@@ -53,6 +93,14 @@
     <div class="box-shadow d-none d-md-block"></div>
 </div>
 
+
+<div class="contentbg">
+    <div class="container">
+        <h1 class="f-handstyle" style="font-size: 30px;">Your previous orders :)</h1>
+        <br/>
+        <?php echo $previousOrders?>
+    </div>
+</div>
 <!--- FOOTER --->
 <footer class="container py-5">
     <div class="row">

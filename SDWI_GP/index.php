@@ -14,7 +14,7 @@
     session_start();
     if (isset($_SESSION['user'])) {
         $username = $_SESSION['user'];
-        $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $username . "</a>
+        $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"./customervieworder.php\">Hello, " . $username . "</a>
             <a class=\"py-2 d-none d-md-inline-block\" href=\"logout.php\">Sign out</a>
             ";
 
@@ -182,7 +182,7 @@ if(isset($_SESSION['warn'])){
         <div class="my-3 p-3">
             <h2 class="display-5">- 雪のお姫様 -</h2>
             <p class="lead f-handstyle">Loving deeply like snows.</p>
-            <br/> name="submit"
+            <br/>
             <form action="add.php?cake=7" method="Post">
             <input type="submit" class="btn btn-sm btn-outline-dark" name="submit" value="Small (x1)">
             <input type="submit" class="btn btn-sm btn-outline-dark" name="submit" value="Medium (x2)">
