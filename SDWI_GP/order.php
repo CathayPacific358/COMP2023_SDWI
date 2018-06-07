@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set("Asia/Shanghai");
 $cake = array("mini-FERRERO", "Lavender Queen", "La Framboise", "Bruja mágica", "北海道の深い冬。", "Dreaming Cream", "Soul of Chocolate", "雪のお姫様", "Merry Christmas!");
 $servername = "localhost";
 $dbusername = "root";
@@ -9,7 +10,7 @@ $username = $_SESSION['user'];
 
 $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
-$time = date("Y-m-d");
+$time = date("Y-m-d ").date("H:i");
 for ($i = 0; $i < 9; ++$i) {
     if ($_SESSION['cake' . $i] > 0) {
         if (!empty($_SESSION['fruit' . $i]) || !empty($_SESSION['chocolate' . $i])) {

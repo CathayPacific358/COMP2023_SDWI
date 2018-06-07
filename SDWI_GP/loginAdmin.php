@@ -24,8 +24,8 @@
         $password = hash("md5",$_POST['password']);
         $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
         $result = $conn->query($sql);
-        $row = $result->fetch_assoc();
         if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
             if($row['admin']=='Y')
             {
                 $password=hash("md5",$password);

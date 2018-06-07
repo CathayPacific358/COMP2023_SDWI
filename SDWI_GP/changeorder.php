@@ -42,7 +42,10 @@
         <?php echo $head; ?>
     </div>
 </nav>
-
+<?php
+if(isset($_SESSION['warn'])) echo $_SESSION['warn'];
+$_SESSION['warn'] = "";
+?>
 <!-- Main Content -->
 <div class="contentbg">
     <div class="container">
@@ -50,34 +53,26 @@
         <br/>
         <br/>
         <h4 class="f-compstyle" style="font-size: 30px;">Delete Order</h4>
-        <form id="deleteForm" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+        <form id="deleteForm" action="delete.php" method="post">
             <div class="form-row">
                 <div class="col-2">
                     <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                 </div>
-                <div class="col-2">
-                    <input type="text" class="form-control" id="ordertime" placeholder="Order Time">
+                <div class="col-4">
+                    <input type="text" class="form-control" id="ordertime" name="ordertime" placeholder="Order Time(yyyy-mm-dd H:m)">
                 </div>
                 <div class="col-2">
-                    <select id="caketype" type="text" class="form-control">
-                        <option>-Cake type-</option>
-                        <option>mini-FERRERO</option>
-                        <option>Lavender Queen</option>
-                        <option>La Framboise</option>
-                        <option>Bruja mágica</option>
-                        <option>北海道の深い冬。</option>
-                        <option>Dreaming Cream</option>
-                        <option>Soul of Chocolate</option>
-                        <option>雪のお姫様</option>
-                        <option>Merry Christmas!</option>
-                    </select>
-                </div>
-                <div class="col-2">
-                    <select id="size" type="text" class="form-control">
-                        <option>-Size-</option>
-                        <option>Small (x1)</option>
-                        <option>Medium (x2)</option>
-                        <option>Large (x3)</option>
+                    <select id="caketype" type="text" name="cake" class="form-control">
+                        <option value="x">-Cake type-</option>
+                        <option value="0">mini-FERRERO</option>
+                        <option value="1">Lavender Queen</option>
+                        <option value="2">La Framboise</option>
+                        <option value="3">Bruja mágica</option>
+                        <option value="4">北海道の深い冬。</option>
+                        <option value="5">Dreaming Cream</option>
+                        <option value="6">Soul of Chocolate</option>
+                        <option value="7">雪のお姫様</option>
+                        <option value="8">Merry Christmas!</option>
                     </select>
                 </div>
             </div>
@@ -103,16 +98,16 @@
         <div class="form-row">
             <div class="col-2">
                 <select type="text" class="form-control">
-                    <option>-Cake type-</option>
-                    <option>mini-FERRERO</option>
-                    <option>Lavender Queen</option>
-                    <option>La Framboise</option>
-                    <option>Bruja mágica</option>
-                    <option>北海道の深い冬。</option>
-                    <option>Dreaming Cream</option>
-                    <option>Soul of Chocolate</option>
-                    <option>雪のお姫様</option>
-                    <option>Merry Christmas!</option>
+                    <option value="x">-Cake type-</option>
+                    <option value="0">mini-FERRERO</option>
+                    <option value="1">Lavender Queen</option>
+                    <option value="2">La Framboise</option>
+                    <option value="3">Bruja mágica</option>
+                    <option value="4">北海道の深い冬。</option>
+                    <option value="5">Dreaming Cream</option>
+                    <option value="6">Soul of Chocolate</option>
+                    <option value="7">雪のお姫様</option>
+                    <option value="8">Merry Christmas!</option>
                 </select>
             </div>
             <div class="col-2">
