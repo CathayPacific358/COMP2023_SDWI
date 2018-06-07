@@ -12,7 +12,6 @@
 
     <?php
     session_start();
-    $servername = "localhost";
     if (isset($_SESSION['user'])) {
         $username = $_SESSION['user'];
         $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $username . "</a>
@@ -48,12 +47,19 @@
     </div>
 </nav>
 
+<?php
+if(isset($_SESSION['warn'])){
+    echo $_SESSION['warn'];
+    $_SESSION['warn'] = "";
+}
+?>
+
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
     <div><img src="./img/GPLOGO_WRH.png" style="width:18%;"></div>
     <div class="box-shadow d-none d-md-block"></div>
 </div>
 
-<form>
+
 <!-- ROW ONE -->
 <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
     <div class="bg-dark mr-md-3 pt-3 pt-md-5 text-center text-white overflow-hidden">
@@ -61,9 +67,11 @@
             <h2 class="display-5">- mini-FERRERO -</h2>
             <p class="lead f-handstyle">Chocolate in love with chocolate.</p>
             <br/>
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Small (x1)">
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Medium (x2)">
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Large (x3)">
+            <form action="add.php?cake=0" method="Post">
+                <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Small (x1)">
+                <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Medium (x2)">
+                <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Large (x3)">
+            </form>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake1.jpg" class="indeximg"/>
@@ -75,9 +83,11 @@
             <h2 class="display-5">- Lavender Queen -</h2>
             <p class="lead f-handstyle">Great purple, incredible.</p>
             <br/>
-            <input type="submit" class="btn btn-sm btn-outline-dark" value="Small (x1)">
-            <input type="submit" class="btn btn-sm btn-outline-dark" value="Medium (x2)">
-            <input type="submit" class="btn btn-sm btn-outline-dark" value="Large (x3)">
+            <form action="add.php?cake=1" method="Post">
+            <input type="submit" class="btn btn-sm btn-outline-dark" name="submit" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" name="submit" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" name="submit" value="Large (x3)">
+            </form>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake2.jpg" class="indeximg"/>
@@ -89,9 +99,11 @@
             <h2 class="display-5">- La Framboise -</h2>
             <p class="lead f-handstyle">Raspberry, a sweet story.</p>
             <br/>
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Small (x1)">
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Medium (x2)">
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Large (x3)">
+            <form action="add.php?cake=2" method="Post">
+            <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Large (x3)">
+            </form>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake3.jpg" class="indeximg"/>
@@ -106,9 +118,11 @@
             <h2 class="display-5">- Bruja mágica -</h2>
             <p class="lead f-handstyle">Vanished, leaving a hat.</p>
             <br/>
-            <input type="submit" class="btn btn-sm btn-outline-dark" value="Small (x1)">
-            <input type="submit" class="btn btn-sm btn-outline-dark" value="Medium (x2)">
-            <input type="submit" class="btn btn-sm btn-outline-dark" value="Large (x3)">
+            <form action="add.php?cake=3" method="Post">
+            <input type="submit" class="btn btn-sm btn-outline-dark" name="submit" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" name="submit" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" name="submit" value="Large (x3)">
+            </form>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake9.jpg" class="indeximg"/>
@@ -119,9 +133,11 @@
             <h2 class="display-5">- 北海道の深い冬。 -</h2>
             <p class="lead f-handstyle">Snowflake & pearl, you & me.</p>
             <br/>
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Small (x1)">
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Medium (x2)">
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Large (x3)">
+            <form action="add.php?cake=4" method="Post">
+            <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Large (x3)">
+            </form>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake6.jpg" class="indeximg"/>
@@ -132,9 +148,11 @@
             <h2 class="display-5">- Dreaming Cream -</h2>
             <p class="lead f-handstyle">And an even wittier subheading.</p>
             <br/>
-            <input type="submit" class="btn btn-sm btn-outline-dark" value="Small (x1)">
-            <input type="submit" class="btn btn-sm btn-outline-dark" value="Medium (x2)">
-            <input type="submit" class="btn btn-sm btn-outline-dark" value="Large (x3)">
+            <form action="add.php?cake=5" method="Post">
+            <input type="submit" class="btn btn-sm btn-outline-dark" name="submit" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" name="submit" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" name="submit" value="Large (x3)">
+            </form>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake5.jpg" class="indeximg"/>
@@ -150,9 +168,11 @@
             <h2 class="display-5">- Soul of Chocolate -</h2>
             <p class="lead f-handstyle">His soul - Ms.Marshmallow.</p>
             <br/>
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Small (x1)">
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Medium (x2)">
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Large (x3)">
+            <form action="add.php?cake=6" method="Post">
+            <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Large (x3)">
+            </form>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake4.jpg" class="indeximg"/>
@@ -162,10 +182,12 @@
         <div class="my-3 p-3">
             <h2 class="display-5">- 雪のお姫様 -</h2>
             <p class="lead f-handstyle">Loving deeply like snows.</p>
-            <br/>
-            <input type="submit" class="btn btn-sm btn-outline-dark" value="Small (x1)">
-            <input type="submit" class="btn btn-sm btn-outline-dark" value="Medium (x2)">
-            <input type="submit" class="btn btn-sm btn-outline-dark" value="Large (x3)">
+            <br/> name="submit"
+            <form action="add.php?cake=7" method="Post">
+            <input type="submit" class="btn btn-sm btn-outline-dark" name="submit" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" name="submit" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-dark" name="submit" value="Large (x3)">
+            </form>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake7.jpg" class="indeximg"/>
@@ -176,16 +198,17 @@
             <h2 class="display-5">- Merry Christmas! -</h2>
             <p class="lead f-handstyle">Everyday is new year.</p>
             <br/>
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Small (x1)">
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Medium (x2)">
-            <input type="submit" class="btn btn-sm btn-outline-light" value="Large (x3)">
+            <form action="add.php?cake=8" method="Post">
+            <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Small (x1)">
+            <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Medium (x2)">
+            <input type="submit" class="btn btn-sm btn-outline-light" name="submit" value="Large (x3)">
+            </form>
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake8.jpg" class="indeximg"/>
         </div>
     </div>
 </div>
-</form>
 
 <!--- FOOTER --->
 <footer class="container py-5">
