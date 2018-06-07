@@ -23,9 +23,7 @@
         die;
     }
 
-    $username = "";
-    $username = $_REQUEST["username"];
-    echo $username;
+
     ?>
 </head>
 <body>
@@ -52,9 +50,10 @@
         <br/>
         <br/>
         <h4 class="f-compstyle" style="font-size: 30px;">Delete Order</h4>
+        <form id="deleteForm" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
             <div class="form-row">
                 <div class="col-2">
-                    <input type="text" class="form-control" id="username" placeholder="Username">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                 </div>
                 <div class="col-2">
                     <input type="text" class="form-control" id="ordertime" placeholder="Order Time">
@@ -81,15 +80,20 @@
                         <option>Large (x3)</option>
                     </select>
                 </div>
-                <div>
-                    <input type="submit" class="btn btn-danger" onclick="getInfo()" value="Delete">
-                </div>
             </div>
+        </form>
+        <br/>
+        <div class="form-row">
+        <div class="col-4">
+            <button class="btn btn-danger" data-toggle="modal" data-target="#delwarning">Delete</button>
+        </div>
+        </div>
 
-        <!-- data-toggle="modal" data-target="#delwarning" -->
         <br/>
         <br/>
+
         <h4 class="f-compstyle" style="font-size: 30px">Update Order</h4>
+        <form id="addForm" action="" method="post">
         <div class="form-row">
             <div class="col-2">
                 <input type="text" class="form-control" id="test" placeholder="Username">
@@ -145,11 +149,12 @@
                 <textarea type="text" class="form-control" rows="3" placeholder="Gift message or comment"></textarea>
             </div>
         </div>
+        </form>
         <br/>
         <div class="form-row">
             <div class="col-4">
             <div>
-                <button class="btn btn-success" data-toggle="modal" data-target="#addwarning">Confirm adding</button>
+                <button class="btn btn-success" data-toggle="modal" data-target="#addwarning">Add order</button>
             </div>
             </div>
         </div>
@@ -169,7 +174,7 @@
             <div class="modal-body f-compstyle">Are you sure to <span style="color: red"> DELETE</span> this order?</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-outline-danger">Confirm</button>
+                <button type="button" id="del" class="btn btn-outline-danger">Confirm</button>
             </div>
         </div>
     </div>
@@ -185,7 +190,7 @@
             <div class="modal-body f-compstyle">Are you sure to <span class="text-success"> ADD</span> this order?</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-outline-success">Confirm</button>
+                <button type="button" id="add" class="btn btn-outline-success">Confirm</button>
             </div>
         </div>
     </div>
@@ -218,24 +223,16 @@
         fg: '#eceeef',
         text: 'Thumbnail'
     });
-
-    function getInfo(){
-        var username;
-        var ordertime;
-        var caketype;
-        var size;
-        var test;
-
-        username = document.getElementById("username").value;
-        ordertime = document.getElementById("ordertime").value;
-        caketype = document.getElementById("caketype").value;
-        size = document.getElementById("size").value;
-
-        test = document.getElementById("test");
-
-        test.value = username;
-    }
-
+</script>
+<script>
+    $("#del").click(function(){
+        $("#deleteForm").submit();
+    });
+</script>
+<script>
+    $("#add").click(function(){
+        $("#addForm").submit();
+    });
 </script>
 </body>
 </html>
