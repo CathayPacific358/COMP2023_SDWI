@@ -22,6 +22,10 @@
         header("Location:homepage.php");
         die;
     }
+
+    $username = "";
+    $username = $_REQUEST["username"];
+    echo $username;
     ?>
 </head>
 <body>
@@ -50,49 +54,89 @@
         <h4 class="f-compstyle" style="font-size: 30px;">Delete Order</h4>
             <div class="form-row">
                 <div class="col-2">
-                    <input type="text" class="form-control" placeholder="Username">
+                    <input type="text" class="form-control" id="username" placeholder="Username">
                 </div>
                 <div class="col-2">
-                    <input type="text" class="form-control" placeholder="Order Time">
+                    <input type="text" class="form-control" id="ordertime" placeholder="Order Time">
                 </div>
-                <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Address">
+                <div class="col-2">
+                    <select id="caketype" type="text" class="form-control">
+                        <option>-Cake type-</option>
+                        <option>mini-FERRERO</option>
+                        <option>Lavender Queen</option>
+                        <option>La Framboise</option>
+                        <option>Bruja mágica</option>
+                        <option>北海道の深い冬。</option>
+                        <option>Dreaming Cream</option>
+                        <option>Soul of Chocolate</option>
+                        <option>雪のお姫様</option>
+                        <option>Merry Christmas!</option>
+                    </select>
+                </div>
+                <div class="col-2">
+                    <select id="size" type="text" class="form-control">
+                        <option>-Size-</option>
+                        <option>Small (x1)</option>
+                        <option>Medium (x2)</option>
+                        <option>Large (x3)</option>
+                    </select>
                 </div>
                 <div>
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#delwarning">Delete</button>
+                    <input type="submit" class="btn btn-danger" onclick="getInfo()" value="Delete">
                 </div>
             </div>
 
+        <!-- data-toggle="modal" data-target="#delwarning" -->
         <br/>
         <br/>
         <h4 class="f-compstyle" style="font-size: 30px">Update Order</h4>
         <div class="form-row">
             <div class="col-2">
-                <input type="text" class="form-control" placeholder="Username">
-            </div>
-            <div class="col-2">
-                <input type="text" class="form-control" placeholder="City">
-            </div>
-            <div class="col-2">
-                <input type="text" class="form-control" placeholder="Cake Type">
+                <input type="text" class="form-control" id="test" placeholder="Username">
             </div>
         </div>
         <br/>
         <div class="form-row">
             <div class="col-2">
-                <input type="text" class="form-control" placeholder="Size">
+                <select type="text" class="form-control">
+                    <option>-Cake type-</option>
+                    <option>mini-FERRERO</option>
+                    <option>Lavender Queen</option>
+                    <option>La Framboise</option>
+                    <option>Bruja mágica</option>
+                    <option>北海道の深い冬。</option>
+                    <option>Dreaming Cream</option>
+                    <option>Soul of Chocolate</option>
+                    <option>雪のお姫様</option>
+                    <option>Merry Christmas!</option>
+                </select>
             </div>
             <div class="col-2">
-                <input type="text" class="form-control" placeholder="Amount">
+                <select type="text" class="form-control">
+                    <option>-Size-</option>
+                    <option>Small (x1)</option>
+                    <option>Medium (x2)</option>
+                    <option>Large (x3)</option>
+                </select>
             </div>
             <div class="col-2">
-                <input type="text" class="form-control" placeholder="Topping">
+                <select type="text" class="form-control">
+                    <option>-Topping-</option>
+                    <option>Fruit</option>
+                    <option>Chocolate</option>
+                    <option>Fruit & chocolate</option>
+                    <option>No topping</option>
+                </select>
             </div>
         </div>
         <br/>
         <div class="form-row">
             <div class="col-2">
-                <input type="text" class="form-control" placeholder="Gift Card">
+                <select type="text" class="form-control">
+                    <option>Gift Card</option>
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
             </div>
         </div>
         <br/>
@@ -102,14 +146,13 @@
             </div>
         </div>
         <br/>
-            <div class="form-row">
-            <div class="col-6">
-                <input type="text" class="form-control" placeholder="Address">
-            </div>
+        <div class="form-row">
+            <div class="col-4">
             <div>
-                <button class="btn btn-success" data-toggle="modal" data-target="#addwarning">Add</button>
+                <button class="btn btn-success" data-toggle="modal" data-target="#addwarning">Confirm adding</button>
             </div>
             </div>
+        </div>
         <br/>
         <br/>
     </div>
@@ -175,6 +218,24 @@
         fg: '#eceeef',
         text: 'Thumbnail'
     });
+
+    function getInfo(){
+        var username;
+        var ordertime;
+        var caketype;
+        var size;
+        var test;
+
+        username = document.getElementById("username").value;
+        ordertime = document.getElementById("ordertime").value;
+        caketype = document.getElementById("caketype").value;
+        size = document.getElementById("size").value;
+
+        test = document.getElementById("test");
+
+        test.value = username;
+    }
+
 </script>
 </body>
 </html>

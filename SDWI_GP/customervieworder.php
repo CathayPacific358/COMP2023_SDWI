@@ -9,6 +9,7 @@
 
     <!-- Custom styles for this template -->
     <link href="./totalStyle.css" rel="stylesheet">
+
     <?php
     session_start();
     $servername = "localhost";
@@ -17,6 +18,7 @@
         $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $username . "</a>
             <a class=\"py-2 d-none d-md-inline-block\" href=\"logout.php\">Sign out</a>
             ";
+
 
     }
     else {
@@ -28,6 +30,7 @@
         <a class=\"py-2 d-none d-md-inline-block\" href=\"./registration.php\">Sign up</a>
         ";
     }
+
     ?>
 </head>
 <body>
@@ -40,32 +43,14 @@
         </a>
         <a class="py-2 d-none d-md-inline-block" href="homepage.php">About us</a>
         <a class="py-2 d-none d-md-inline-block" href="index.php">Product</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
+        <a class="py-2 d-none d-md-inline-block" href="cart.php">Cart</a>
         <?php echo $head; ?>
-
-
     </div>
 </nav>
 
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
     <div><img src="./img/GPLOGO_WRH.png" style="width:18%;"></div>
     <div class="box-shadow d-none d-md-block"></div>
-</div>
-
-<!-- Greeting & Intro -->
-<div class="contentbg">
-<div class="container">
-    <div class="f-compstyle">
-        <p class="pt-md-5 f-handstyle" style="font-size: 50px;">Hello,</p>
-        <p class="pt-md-5" style="font-size: 24px;">We are a cake brand that particularly provide cup cakes for the portable food industry.
-                                                    And we initially aim at the market of aviation food industry.</p>
-        <p class="pt-md-5" style="font-size: 24px;">Our retail shop will open in Guangzhou Baiyun International Airport, and serve the
-                                                    customers who want to have cakes there. Meanwhile, express service is provided, for
-                                                    someone who want to try our products but do not willing to go to the airport. Moreover,
-                                                     we are also planning to cooperate with airlines, in order to become a on-board desserts
-                                                    supplier.</p>
-    </div>
-</div>
 </div>
 
 <!--- FOOTER --->
@@ -104,15 +89,17 @@
     </div>
 </footer>
 
+
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="./bootstrap-4.0.0/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="./bootstrap-4.0.0/assets/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
 <script src="./bootstrap-4.0.0/assets/js/vendor/popper.min.js"></script>
 <script src="./bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
+<script src="./bootstrap-4.0.0/js/dist/popover.js"></script>
 <script src="./bootstrap-4.0.0/assets/js/vendor/holder.min.js"></script>
 <script>
     Holder.addTheme('thumb', {
@@ -120,6 +107,7 @@
         fg: '#eceeef',
         text: 'Thumbnail'
     });
+
 </script>
 </body>
 </html>
