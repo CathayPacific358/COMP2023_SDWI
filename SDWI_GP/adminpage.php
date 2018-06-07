@@ -14,7 +14,7 @@
 
     if (isset($_SESSION['user'])) {
         $head = "
-            <a class=\"py-2 d-none d-md-inline-block\" href=\"./adminvieworder.php.php\">Hello, " . $_SESSION['user'] . " [ admin ]</a>
+            <a class=\"py-2 d-none d-md-inline-block\" href=\"./adminvieworder.php\">Hello, " . $_SESSION['user'] . " [ admin ]</a>
             <a class=\"py-2 d-none d-md-inline-block\" href=\"logout.php\">Sign out</a>
             ";
     }
