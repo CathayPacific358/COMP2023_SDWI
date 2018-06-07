@@ -40,7 +40,7 @@
         </a>
         <a class="py-2 d-none d-md-inline-block" href="homepage.php">About us</a>
         <a class="py-2 d-none d-md-inline-block" href="index.php">Product</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
+        <a class="py-2 d-none d-md-inline-block" href="cart.php">Cart</a>
         <?php echo $head; ?>
 
 

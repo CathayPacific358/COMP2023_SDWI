@@ -16,6 +16,7 @@
 
     if (isset($_SESSION['user'])) {
         if (empty($_SESSION['custmes'])) $_SESSION['custmes'] = "";
+        if (empty($_SESSION['giftcard'])) $_SESSION['giftcard'] = "";
         $username = $_SESSION['user'];
         $head = "<a class=\"py-2 d-none d-md-inline-block\" href=\"#\">Hello, " . $username . "</a>
             <a class=\"py-2 d-none d-md-inline-block\" href=\"logout.php\">Sign out</a>
@@ -23,8 +24,6 @@
         $cake = array("mini-FERRERO", "Lavender Queen", "La Framboise", "Bruja mágica", "北海道の深い冬。", "Dreaming Cream", "Soul of Chocolate", "雪のお姫様", "Merry Christmas!");
         $price = array(12, 9, 10, 15, 12, 8, 13, 12, 16);
         $num = 0;
-        $_SESSION['cake1'] = 2;
-        $_SESSION['cake8'] = 2;
         $application = "<tr><th>Type of cake</th><th>Amount</th><th>Price per cake</th><th>Extra toppings</th></tr>
             <tr><td><div></div></td><td><div></div></td><td><div></div></td><td><div></div></td></tr>";
         for ($i = 0; $i < 9; ++$i) {
@@ -53,7 +52,10 @@
         }
     }
     else {
-        if (isset($_SERVER["HTTP_REFERER"])) header("Location:" . $_SERVER["HTTP_REFERER"]);
+        if (isset($_SERVER["HTTP_REFERER"])){
+            if(!preg_match("/^(?=.*\cart.php)$/",$_SERVER["HTTP_REFERER"]))  header("Location:homepage.php");
+            else header("Location:" . $_SERVER["HTTP_REFERER"]);
+        }
         else header("Location:homepage.php");
     }
 
@@ -70,17 +72,20 @@
 
         }
         $_SESSION['custmes'] = $_POST['custmes'];
-        if(isset($_POST['giftcard'])) $giftcard = "checked";
+        if(isset($_POST['giftcard'])) $_SESSION['giftcard'] = "checked";
+        else $_SESSION['giftcard'] = "";
         $mes = "<table class=\"table invoice-total\">
         <tr>
             <td><strong>Total Price</strong>
             </td>
-            <td>" . $totalprice . "</td>
+            <td class='text-right'>" . $totalprice . "￥</td>
         </tr>
         </table>
         </form>
         <div class=\"text-right\">
-            <button class=\"btn btn-outline-info\" data-toggle=\"tooltip\" data-placement='top' title=\"please check your application before you order and purchase\"><i class=\"fa fa-dollar\" ></i>Order & Purchase</button>
+        <form action='order.php' method=\"Post\">
+            <input type='submit' class=\"btn btn-outline-info\" data-toggle=\"popover\" data-trigger='hover' data-placement='top' data-container='body' data-content='Please check your application before order and purchase' title=\"Tips\" value='Order & Purchase'>
+        </form>
         </div><br>";
         $application = "<tr><th>Type of cake</th><th>Amount</th><th>Price per cake</th><th>Extra toppings</th></tr>
             <tr><td><div></div></td><td><div></div></td><td><div></div></td><td><div></div></td></tr>";
@@ -146,7 +151,7 @@
                 <br>
                 <span class="f-compstyle">Free gift card: </span>
                 <div class="custom-control  custom-checkbox mb-3">
-                    <input type="checkbox" name="giftcard" class="custom-control-input" id="giftcard" <?php echo $giftcard;?>>
+                    <input type="checkbox" name="giftcard" class="custom-control-input" id="giftcard" <?php echo $_SESSION['giftcard'];?>>
                     <label class="custom-control-label" for="giftcard" >Order giftcard</label>
                 </div>
                 <span class="f-compstyle">Leave your gift message or comment: </span>
@@ -219,11 +224,10 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="./bootstrap-4.0.0/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="./bootstrap-4.0.0/assets/js/vendor/jquery-3.3.1.js"><\/script>')</script>
 <script src="./bootstrap-4.0.0/assets/js/vendor/popper.min.js"></script>
 <script src="./bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
-<script src="./bootstrap-4.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="./bootstrap-4.0.0/assets/js/vendor/jquery-slim.min.js"></script>
+<script src="./bootstrap-4.0.0/js/dist/popover.js"></script>
 <script src="./bootstrap-4.0.0/assets/js/vendor/holder.min.js"></script>
 <script>
     Holder.addTheme('thumb', {
@@ -231,10 +235,9 @@
         fg: '#eceeef',
         text: 'Thumbnail'
     });
-</script>
-<script>
+
     $(function () {
-        $("[data-toggle='tooltip']").tooltip();
+        $("[data-toggle='popover']").popover();
     });
 </script>
 </body>
