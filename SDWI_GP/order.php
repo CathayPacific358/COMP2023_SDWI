@@ -13,7 +13,7 @@ $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 $time = date("Y-m-d ").date("H:i");
 if (!empty($_SESSION['custmes']))
     $comment = $_SESSION['custmes'];
-else $comment = "No";
+else $comment = "No message";
 for ($i = 0; $i < 9; ++$i) {
     if ($_SESSION['cake' . $i] > 0) {
         $amount = $_SESSION['cake' . $i];

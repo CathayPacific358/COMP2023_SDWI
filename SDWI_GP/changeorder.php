@@ -88,16 +88,16 @@ $_SESSION['warn'] = "";
         <br/>
 
         <h4 class="f-compstyle" style="font-size: 30px">Update Order</h4>
-        <form id="addForm" action="" method="post">
+        <form id="addForm" action="updateorder.php" method="post">
         <div class="form-row">
             <div class="col-2">
-                <input type="text" class="form-control" id="test" placeholder="Username">
+                <input type="text" class="form-control" name="username" id="test" placeholder="Username">
             </div>
         </div>
         <br/>
         <div class="form-row">
             <div class="col-2">
-                <select type="text" class="form-control">
+                <select type="text" class="form-control" name="cake">
                     <option value="x">-Cake type-</option>
                     <option value="0">mini-FERRERO</option>
                     <option value="1">Lavender Queen</option>
@@ -111,28 +111,28 @@ $_SESSION['warn'] = "";
                 </select>
             </div>
             <div class="col-2">
-                <select type="text" class="form-control">
-                    <option>-Size-</option>
-                    <option>Small (x1)</option>
-                    <option>Medium (x2)</option>
-                    <option>Large (x3)</option>
+                <select type="text" class="form-control" name="amount">
+                    <option value="0">-Size-</option>
+                    <option value="1">Small (x1)</option>
+                    <option value="2">Medium (x2)</option>
+                    <option value="3">Large (x3)</option>
                 </select>
             </div>
             <div class="col-2">
-                <select type="text" class="form-control">
-                    <option>-Topping-</option>
-                    <option>Fruit</option>
-                    <option>Chocolate</option>
-                    <option>Fruit & chocolate</option>
-                    <option>No topping</option>
+                <select type="text" class="form-control" name="topping">
+                    <option value="x">-Topping-</option>
+                    <option value="Fruit">Fruit</option>
+                    <option value="Chocolate">Chocolate</option>
+                    <option value="Fruit & chocolate">Fruit & chocolate</option>
+                    <option value="No topping">No topping</option>
                 </select>
             </div>
         </div>
         <br/>
         <div class="form-row">
             <div class="col-2">
-                <select type="text" class="form-control">
-                    <option>Gift Card</option>
+                <select type="text" class="form-control" name="giftcard">
+                    <option value="0">Gift Card</option>
                     <option value="Y">Yes</option>
                     <option value="N">No</option>
                 </select>
@@ -141,7 +141,7 @@ $_SESSION['warn'] = "";
         <br/>
         <div class="form-row">
             <div class="col-6">
-                <textarea type="text" class="form-control" rows="3" placeholder="Gift message or comment"></textarea>
+                <textarea type="text" class="form-control" name="comment" rows="3" placeholder="Gift message or comment"></textarea>
             </div>
         </div>
         </form>
