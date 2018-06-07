@@ -43,7 +43,7 @@
         </a>
         <a class="py-2 d-none d-md-inline-block" href="homepage.php">About us</a>
         <a class="py-2 d-none d-md-inline-block" href="index.php">Product</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
+        <a class="py-2 d-none d-md-inline-block" href="cart.php">Cart</a>
         <?php echo $head; ?>
     </div>
 </nav>
@@ -60,9 +60,9 @@
             <h2 class="display-5">- mini-FERRERO -</h2>
             <p class="lead f-handstyle">Chocolate in love with chocolate.</p>
             <br/>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Small (x1)</button>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Medium (x2)</button>
-            <button class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes">Large (x3)</button>
+            <input type="button" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes" value="Small (x1)">
+            <input type="button" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes" value="Medium (x2)">
+            <input type="button" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#cartmes" value="Large (x3)">
         </div>
         <div class="box-shadow" style="width: auto; height: auto; border-radius: 21px 21px 0 0;">
             <img src="./img/cake1.jpg" class="indeximg"/>
