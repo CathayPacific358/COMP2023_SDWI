@@ -11,13 +11,15 @@ $username = $_SESSION['user'];
 $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
 $time = date("Y-m-d ").date("H:i");
+if (!empty($_SESSION['custmes']))
+    $comment = $_SESSION['custmes'];
+else $comment = "No";
 for ($i = 0; $i < 9; ++$i) {
     if ($_SESSION['cake' . $i] > 0) {
+        $amount = $_SESSION['cake' . $i];
         if (!empty($_SESSION['fruit' . $i]) || !empty($_SESSION['chocolate' . $i])) {
             $topping = "";
-            if (!empty($_SESSION['custmes']))
-                $comment = $_SESSION['custmes'];
-            else $comment = "No";
+
             if (!empty($_SESSION['fruit' . $i])) {
                 $topping .= "fruit ";
                 if (!empty($_SESSION['chocolate' . $i])) {
@@ -29,8 +31,8 @@ for ($i = 0; $i < 9; ++$i) {
         else $topping = "No topping";
         if (!empty($_SESSION['giftcard'])) $giftcard = "Y";
         else $giftcard = "N";
-        $sql = "INSERT INTO userbook (username, cake, comment, ordertime, toppings, giftcard) VALUES 
-                ('$username','$cake[$i]','$comment','$time','$topping','$giftcard')";
+        $sql = "INSERT INTO userbook (username, cake, comment, ordertime, toppings, giftcard,amount) VALUES 
+                ('$username','$cake[$i]','$comment','$time','$topping','$giftcard','$amount')";
         $result = $conn->query($sql);
 
     }
